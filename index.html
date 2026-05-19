@@ -108,11 +108,11 @@
                 print-color-adjust: exact !important;
             }
             /* Correctly mapped Dark slide templates */
-            #slide-1, #slide-3, #slide-6, #slide-8, #slide-10, #slide-13, #slide-16, #slide-17, #slide-21, #slide-23, #slide-24, #slide-25 {
+            #slide-1, #slide-3, #slide-6, #slide-8, #slide-10, #slide-13, #slide-16, #slide-17, #slide-21, #slide-23, #slide-24, #slide-25, #slide-26 {
                 background-color: #0A1D37 !important;
                 color: #F1F5F9 !important;
             }
-            #slide-1 *, #slide-3 *, #slide-6 *, #slide-8 *, #slide-10 *, #slide-13 *, #slide-16 *, #slide-17 *, #slide-21 *, #slide-23 *, #slide-24 *, #slide-25 * {
+            #slide-1 *, #slide-3 *, #slide-6 *, #slide-8 *, #slide-10 *, #slide-13 *, #slide-16 *, #slide-17 *, #slide-21 *, #slide-23 *, #slide-24 *, #slide-25 *, #slide-26 * {
                 color: #F1F5F9 !important;
             }
             /* Correctly mapped Light/Cream slide templates */
@@ -591,7 +591,7 @@
                                 <span class="text-peach font-title font-bold text-xs uppercase tracking-wider block mb-2">KYC Hesitant</span>
                                 <h3 class="text-navy font-title font-bold text-lg mb-2">Ankit (24)</h3>
                                 <p class="text-slate-600 text-xs italic mb-4 leading-relaxed">
-                                    "Let me test-drive a virtual demo account first before demanding my sensitive documents."
+                                    "Why should I share my PAN before I even know how the platform works?"
                                 </p>
                             </div>
                             <p class="text-slateGray text-xs border-t border-navy/10 pt-4 mt-4">
@@ -1084,10 +1084,82 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 24: ROI & CAC ANALYSIS (INTERACTIVE CALCULATOR) -->
+                <!-- SLIDE 24: CONVERSION PROBABILITY SIMULATOR (NEW SLIDE) -->
                 <section id="slide-24" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
                     <div>
-                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">23 / STRATEGIC INVESTMENT</span>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">23 / FUNNEL MODELING</span>
+                        <h2 class="text-white font-title font-extrabold text-3xl mb-4">Onboarding <span class="text-lime">Probability Simulator</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 my-auto items-center">
+                        <!-- Input Control Panels -->
+                        <div class="lg:col-span-5 bg-navyLight border border-white/5 rounded-2xl p-6 flex flex-col gap-6 shadow-xl">
+                            <h3 class="text-lime font-title font-bold text-sm uppercase tracking-wider"><i class="fa-solid fa-sliders mr-2"></i>Adjust Campaign Metrics</h3>
+                            
+                            <!-- Slider 1: Leads approached -->
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-xs text-slateGray font-bold uppercase">Leads Approached</span>
+                                    <span id="label-leads" class="text-sm font-title font-bold text-white">100</span>
+                                </div>
+                                <input type="range" id="input-leads" min="50" max="500" step="10" value="100" oninput="runFunnelSimulation()" class="w-full accent-peach bg-navyDark h-1.5 rounded-lg outline-none cursor-pointer">
+                            </div>
+
+                            <!-- Slider 2: Click Through / Visit rate -->
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-xs text-slateGray font-bold uppercase">Show Interest & Visit (60%)</span>
+                                    <span id="label-interest" class="text-sm font-title font-bold text-white">60</span>
+                                </div>
+                                <input type="range" id="input-interest" min="10" max="100" step="5" value="60" oninput="runFunnelSimulation()" class="w-full accent-lime bg-navyDark h-1.5 rounded-lg outline-none cursor-pointer">
+                            </div>
+
+                            <div class="bg-navyDark p-4 rounded-xl border border-white/5 flex justify-between items-center text-xs">
+                                <span>Total Visiting Website:</span>
+                                <span id="val-visits" class="text-lime font-bold text-sm">60 Visitors</span>
+                            </div>
+                        </div>
+
+                        <!-- Real-time side-by-side calculated probability output cards -->
+                        <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Current Strategy Card -->
+                            <div class="bg-navyLight border border-peach/20 rounded-2xl p-6 flex flex-col justify-between shadow-xl">
+                                <div>
+                                    <span class="text-peach font-title font-bold text-[10px] uppercase tracking-wider block mb-2">Current Strategy (Rigid KYC)</span>
+                                    <div class="text-3xl font-title font-extrabold text-white mb-4" id="val-curr-prob">7.6%</div>
+                                    <ul class="text-[11px] text-slateGray flex flex-col gap-2 border-t border-white/5 pt-3">
+                                        <li>KYC completed: <strong class="text-white" id="val-curr-kyc">39.0</strong> (65%)</li>
+                                        <li>Funded / Active: <strong class="text-white" id="val-curr-funded">4.6</strong> (11.7%)</li>
+                                    </ul>
+                                </div>
+                                <div class="mt-4 bg-navyDark/50 p-2.5 rounded-lg text-[10px] text-slateGray flex justify-between">
+                                    <span>Overall Conversion:</span>
+                                    <span id="val-curr-overall" class="text-white font-bold">4.6%</span>
+                                </div>
+                            </div>
+
+                            <!-- Proposed Strategy Card -->
+                            <div class="bg-navyLight border border-lime/30 rounded-2xl p-6 flex flex-col justify-between shadow-xl">
+                                <div>
+                                    <span class="text-lime font-title font-bold text-[10px] uppercase tracking-wider block mb-2">Proposed Strategy (Value First)</span>
+                                    <div class="text-3xl font-title font-extrabold text-lime mb-4" id="val-prop-prob">30.1%</div>
+                                    <ul class="text-[11px] text-slateGray flex flex-col gap-2 border-t border-white/5 pt-3">
+                                        <li>KYC completed: <strong class="text-white" id="val-prop-kyc">51.6</strong> (86%)</li>
+                                        <li>Funded / Active: <strong class="text-white" id="val-prop-funded">18.1</strong> (35%)</li>
+                                    </ul>
+                                </div>
+                                <div class="mt-4 bg-navyDark/50 p-2.5 rounded-lg text-[10px] text-lime flex justify-between">
+                                    <span>Overall Conversion:</span>
+                                    <span id="val-prop-overall" class="text-lime font-bold">18.1%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 25: ROI & CAC ANALYSIS -->
+                <section id="slide-25" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">24 / STRATEGIC INVESTMENT</span>
                         <h2 class="text-white font-title font-extrabold text-3xl mb-6">ROI & <span class="text-lime">Optimized CAC Analysis</span></h2>
                     </div>
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 my-auto items-center">
@@ -1133,10 +1205,10 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 25: GOVERNANCE, COMPLIANCE & Q&A -->
-                <section id="slide-25" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                <!-- SLIDE 26: GOVERNANCE, COMPLIANCE & Q&A -->
+                <section id="slide-26" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
                     <div>
-                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">24 / COMPLIANCE & CONCLUSION</span>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">25 / COMPLIANCE & CONCLUSION</span>
                         <h2 class="text-white font-title font-extrabold text-3xl mb-6">Governance, <span class="text-lime">Compliance & Q&A</span></h2>
                     </div>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 my-auto items-center">
@@ -1191,15 +1263,15 @@
         <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-x-6 gap-y-2">
             <span><i class="fa-solid fa-keyboard mr-1"></i> Use <strong>Left / Right Arrow</strong> Keys</span>
             <span>•</span>
-            <span><i class="fa-solid fa-globe mr-1"></i> Perfect for 16:9 widescreen boardroom presentation</span>
+            <span><i class="fa-solid fa-globe mr-1"></i> Industry Business Project</span>
             <span>•</span>
-            <span><i class="fa-solid fa-circle-check text-lime mr-1"></i> Fully responsive</span>
+            <span><i class="fa-solid fa-circle-check text-lime mr-1"></i> Team 1-ArihantPlus</span>
         </div>
     </div>
 
     <!-- PRESENTATION APP CONTROLLER LOGIC -->
     <script>
-        const totalSlidesCount = 25;
+        const totalSlidesCount = 26;
         let activeSlideIndex = 1;
 
         // Populate quick jump options dynamically
@@ -1228,8 +1300,9 @@
             "21. Solution II: Heritage AI",
             "22. Solution III: Roadmap",
             "23. Community Growth",
-            "24. ROI & CAC Analysis",
-            "25. Compliance & Conclusion"
+            "24. Funnel Probability Simulator",
+            "25. ROI & CAC Analysis",
+            "26. Compliance & Conclusion"
         ];
 
         slideHeaders.forEach((header, index) => {
@@ -1238,6 +1311,39 @@
             opt.innerText = header;
             jumpSelect.appendChild(opt);
         });
+
+        // Interactive Onboarding Funnel Simulator Engine
+        function runFunnelSimulation() {
+            const leads = parseFloat(document.getElementById('input-leads').value);
+            const interestPercent = parseFloat(document.getElementById('input-interest').value);
+            
+            // Labels update
+            document.getElementById('label-leads').innerText = leads;
+            document.getElementById('label-interest').innerText = interestPercent + "%";
+            
+            const visits = Math.round(leads * (interestPercent / 100));
+            document.getElementById('val-visits').innerText = visits + " Visitors";
+            
+            // 1. Current Strategy Math (Rigid KYC Wall)
+            const currKycCompleted = (visits * 0.65).toFixed(1);
+            const currFunded = (currKycCompleted * 0.117).toFixed(1);
+            const currVisitorProb = 7.6; // (65% * 11.7%)
+            const currOverallProb = ((currFunded / leads) * 100).toFixed(1);
+            
+            document.getElementById('val-curr-kyc').innerText = currKycCompleted;
+            document.getElementById('val-curr-funded').innerText = currFunded;
+            document.getElementById('val-curr-overall').innerText = currOverallProb + "%";
+            
+            // 2. Proposed Strategy Math (Practice Sandbox)
+            const propKycCompleted = (visits * 0.86).toFixed(1);
+            const propFunded = (propKycCompleted * 0.35).toFixed(1);
+            const propVisitorProb = 30.1; // (86% * 35%)
+            const propOverallProb = ((propFunded / leads) * 100).toFixed(1);
+            
+            document.getElementById('val-prop-kyc').innerText = propKycCompleted;
+            document.getElementById('val-prop-funded').innerText = propFunded;
+            document.getElementById('val-prop-overall').innerText = propOverallProb + "%";
+        }
 
         function updateSlideDisplay() {
             // Loop and render slide displays
@@ -1313,7 +1419,8 @@
             }
         });
 
-        // Initialize view state
+        // Initialize view states
+        runFunnelSimulation();
         updateSlideDisplay();
     </script>
 
