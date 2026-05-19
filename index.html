@@ -36,6 +36,18 @@
         }
     </script>
     <style>
+        /* CSS Root Declaration for Safe SVG rendering across all environments */
+        :root {
+            --navy: #0A1D37;
+            --navyLight: #162C4E;
+            --navyDark: #051020;
+            --peach: #E07A5F;
+            --lime: #D9F077;
+            --cream: #FAF8F5;
+            --white: #FFFFFF;
+            --slateLight: #F1F5F9;
+            --slateGray: #94A3B8;
+        }
         .slide-transition {
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
@@ -50,6 +62,71 @@
         body::-webkit-scrollbar {
             display: none;
         }
+
+        /* Executive-Grade Print Media Rules for perfect PDF exports */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                overflow: visible !important;
+                height: auto !important;
+            }
+            /* Hide UI headers, navigation, ambient animations, and backgrounds */
+            header, footer, .ambient-glow-top, .ambient-glow-bottom, .no-print, [role="navigation"], div.absolute {
+                display: none !important;
+            }
+            main {
+                padding: 0 !important;
+                margin: 0 !important;
+                display: block !important;
+                width: 100% !important;
+                height: auto !important;
+            }
+            #deck-canvas {
+                border: none !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                width: 100% !important;
+                height: auto !important;
+                max-width: none !important;
+                aspect-ratio: auto !important;
+                overflow: visible !important;
+                background: transparent !important;
+            }
+            .slide {
+                position: relative !important;
+                display: flex !important; /* Force all slides to compile in list style for printing */
+                opacity: 1 !important;
+                transform: none !important;
+                page-break-after: always !important;
+                break-after: page !important;
+                width: 100vw !important;
+                height: 56.25vw !important; /* Forces 16:9 aspect ratio */
+                box-sizing: border-box !important;
+                padding: 40px !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            /* Correctly mapped Dark slide templates */
+            #slide-1, #slide-3, #slide-6, #slide-8, #slide-10, #slide-13, #slide-16, #slide-17, #slide-21, #slide-23, #slide-24, #slide-25 {
+                background-color: #0A1D37 !important;
+                color: #F1F5F9 !important;
+            }
+            #slide-1 *, #slide-3 *, #slide-6 *, #slide-8 *, #slide-10 *, #slide-13 *, #slide-16 *, #slide-17 *, #slide-21 *, #slide-23 *, #slide-24 *, #slide-25 * {
+                color: #F1F5F9 !important;
+            }
+            /* Correctly mapped Light/Cream slide templates */
+            #slide-2, #slide-4, #slide-5, #slide-7, #slide-9, #slide-11, #slide-12, #slide-14, #slide-15, #slide-18, #slide-19, #slide-20, #slide-22 {
+                background-color: #FAF8F5 !important;
+                color: #0A1D37 !important;
+            }
+            #slide-2 *, #slide-4 *, #slide-5 *, #slide-7 *, #slide-9 *, #slide-11 *, #slide-12 *, #slide-14 *, #slide-15 *, #slide-18 *, #slide-19 *, #slide-20 *, #slide-22 * {
+                color: #0A1D37 !important;
+            }
+            /* Preserve crucial UI status colors */
+            .text-peach, .text-peach * { color: #E07A5F !important; }
+            .text-lime, .text-lime * { color: #D9F077 !important; }
+        }
     </style>
 </head>
 <body class="bg-navyDark text-slateLight min-h-screen flex flex-col justify-between overflow-hidden">
@@ -59,7 +136,7 @@
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(224,122,95,0.05),transparent_40%)] pointer-events-none z-0"></div>
 
     <!-- HEADER / NAVIGATION CONTROLS -->
-    <header class="w-full bg-navy/90 backdrop-blur border-b border-white/10 px-8 py-4 flex justify-between items-center z-20 relative">
+    <header class="w-full bg-navy/90 backdrop-blur border-b border-white/10 px-8 py-4 flex justify-between items-center z-20 relative no-print">
         <div class="flex items-center gap-4">
             <span class="text-lime font-title font-bold tracking-widest text-xs uppercase bg-navyLight px-3 py-1.5 rounded-full border border-white/5">
                 SP Jain Final Presentation Deck
@@ -70,12 +147,22 @@
             </span>
         </div>
         
-        <!-- Dropdown Jump to Slide -->
+        <!-- Dropdown Jump to Slide & Feature Buttons -->
         <div class="flex items-center gap-3">
             <label for="slide-select" class="text-xs text-slateGray font-title font-bold">JUMP TO:</label>
-            <select id="slide-select" onchange="jumpToSlide(this.value)" class="bg-navyLight border border-white/10 text-xs text-lime font-bold rounded-lg px-3 py-2 outline-none cursor-pointer focus:border-peach">
+            <select id="slide-select" onchange="jumpToSlide(this.value)" class="bg-navyLight border border-white/10 text-xs text-lime font-bold rounded-lg px-3 py-2 outline-none cursor-pointer focus:border-peach mr-2">
                 <!-- Dropdown items dynamically populated -->
             </select>
+            
+            <!-- EXPORT TO PDF -->
+            <button onclick="window.print()" class="bg-navyLight hover:bg-peach border border-white/10 hover:border-peach text-xs text-slateLight hover:text-white font-bold rounded-lg px-3 py-2 transition flex items-center gap-1.5" title="Export Presentation as PDF">
+                <i class="fa-solid fa-file-pdf"></i> Download PDF
+            </button>
+
+            <!-- FULL SCREEN TOGGLE -->
+            <button id="fullscreen-btn" onclick="toggleFullscreen()" class="bg-navyLight hover:bg-lime border border-white/10 hover:border-lime text-xs text-slateLight hover:text-navy font-bold rounded-lg px-3 py-2 transition flex items-center gap-1.5" title="Toggle Fullscreen Mode">
+                <i class="fa-solid fa-expand"></i> Full Screen
+            </button>
         </div>
     </header>
 
@@ -88,7 +175,7 @@
 
                 <!-- SLIDE 1: WELCOME & COVER -->
                 <section id="slide-1" class="slide absolute inset-0 p-12 flex flex-col justify-center items-center text-center bg-gradient-to-br from-navy to-navyDark">
-                    <span class="text-peach font-title font-extrabold tracking-[0.25em] text-sm uppercase mb-4">STRATEGIC GROWTH AUDIT 2026</span>
+                    <span class="text-peach font-title font-extrabold tracking-[0.25em] text-sm uppercase mb-4">MGB STRATEGIC GROWTH AUDIT 2026</span>
                     <h1 class="text-white font-title font-extrabold text-5xl lg:text-6xl tracking-tight mb-4">
                         Invest. Trade. Grow. <span class="text-peach">Repeat.</span>
                     </h1>
@@ -173,37 +260,54 @@
                             </div>
                         </div>
                         
-                        <!-- Visual Funnel diagram - Clean Overlap Fix -->
-                        <div class="lg:col-span-7 bg-navyDark border border-white/5 rounded-2xl p-6 shadow-xl">
+                        <!-- Visual Funnel diagram - Overlap Fixed by Table Rows & Flexboxes -->
+                        <div class="lg:col-span-7 bg-navyDark border border-white/5 rounded-2xl p-6 shadow-xl w-full">
                             <h4 class="text-white font-title font-bold text-sm uppercase tracking-wider mb-6 flex items-center gap-2">
                                 <i class="fa-solid fa-arrow-down-wide-short text-peach"></i> User Drop-off Flow
                             </h4>
-                            <div class="flex flex-col gap-3">
-                                <div class="flex items-center justify-between bg-white/5 p-1 rounded-lg gap-4">
-                                    <div class="h-10 w-full bg-gradient-to-r from-lime to-[#b9db45] text-navy font-title font-extrabold text-sm rounded-lg flex items-center px-4">
-                                        App Installs (100%)
+                            <div class="flex flex-col gap-3 w-full">
+                                <!-- Stage 1 -->
+                                <div class="flex items-center gap-3">
+                                    <div class="w-20 md:w-24 text-right text-xs text-slateGray font-bold shrink-0">Stage 1</div>
+                                    <div class="flex-grow bg-white/5 p-1 rounded-lg">
+                                        <div class="h-10 w-full bg-gradient-to-r from-lime to-[#b9db45] text-navy font-title font-extrabold text-xs md:text-sm rounded-md flex items-center px-4">
+                                            App Installs (100%)
+                                        </div>
                                     </div>
+                                    <div class="w-24 md:w-28 text-right text-[10px] md:text-xs font-semibold text-slateGray shrink-0 pr-1">Warm Traffic</div>
                                 </div>
-                                <div class="flex items-center justify-between bg-white/5 p-1 rounded-lg gap-4">
-                                    <div class="h-10 w-[65%] min-w-[180px] bg-gradient-to-r from-lime to-peach text-navy font-title font-extrabold text-sm rounded-lg flex items-center px-4">
-                                        KYC Completed (65%)
+                                
+                                <!-- Stage 2 -->
+                                <div class="flex items-center gap-3">
+                                    <div class="w-20 md:w-24 text-right text-xs text-slateGray font-bold shrink-0">Stage 2</div>
+                                    <div class="flex-grow bg-white/5 p-1 rounded-lg">
+                                        <div class="h-10 w-3/4 min-w-[50%] bg-gradient-to-r from-lime to-peach text-navy font-title font-extrabold text-xs md:text-sm rounded-md flex items-center px-4">
+                                            KYC Completed (65%)
+                                        </div>
                                     </div>
-                                    <span class="text-peach text-xs font-bold whitespace-nowrap shrink-0 pr-2">
-                                        <i class="fa-solid fa-circle-down mr-1"></i> 35% Drop-off
-                                    </span>
+                                    <div class="w-24 md:w-28 text-right text-[10px] md:text-xs font-bold text-peach shrink-0 pr-1">35% Drop-off</div>
                                 </div>
-                                <div class="flex items-center justify-between bg-white/5 p-1 rounded-lg gap-4">
-                                    <div class="h-10 w-[11.7%] min-w-[160px] bg-peach text-white font-title font-extrabold text-xs rounded-lg flex items-center px-4 whitespace-nowrap">
-                                        Wallet Funded (11.7%)
+                                
+                                <!-- Stage 3 -->
+                                <div class="flex items-center gap-3">
+                                    <div class="w-20 md:w-24 text-right text-xs text-slateGray font-bold shrink-0">Stage 3</div>
+                                    <div class="flex-grow bg-white/5 p-1 rounded-lg">
+                                        <div class="h-10 w-1/4 min-w-[25%] bg-peach text-white font-title font-extrabold text-xs rounded-md flex items-center px-4 whitespace-nowrap">
+                                            Wallet Funded (11.7%)
+                                        </div>
                                     </div>
-                                    <span class="text-peach text-xs font-bold whitespace-nowrap shrink-0 pr-2">
-                                        <i class="fa-solid fa-circle-down mr-1"></i> 82% Churn Cliff
-                                    </span>
+                                    <div class="w-24 md:w-28 text-right text-[10px] md:text-xs font-bold text-peach shrink-0 pr-1">82% Churn Cliff</div>
                                 </div>
-                                <div class="flex items-center justify-between bg-white/5 p-1 rounded-lg gap-4">
-                                    <div class="h-10 w-[4%] min-w-[140px] bg-red-600 text-white font-title font-extrabold text-xs rounded-lg flex items-center px-4 whitespace-nowrap">
-                                        Active Retained (2.1%)
+                                
+                                <!-- Stage 4 -->
+                                <div class="flex items-center gap-3">
+                                    <div class="w-20 md:w-24 text-right text-xs text-slateGray font-bold shrink-0">Stage 4</div>
+                                    <div class="flex-grow bg-white/5 p-1 rounded-lg">
+                                        <div class="h-10 w-12 bg-red-600 text-white font-title font-extrabold text-xs rounded-md flex items-center px-3 whitespace-nowrap">
+                                            Retained (2.1%)
+                                        </div>
                                     </div>
+                                    <div class="w-24 md:w-28 text-right text-[10px] md:text-xs font-semibold text-slateGray shrink-0 pr-1">Active Moat</div>
                                 </div>
                             </div>
                         </div>
@@ -417,11 +521,11 @@
                                 <span class="text-peach font-title font-bold text-xs uppercase tracking-wider block mb-2">Zerodha User</span>
                                 <h3 class="text-white font-title font-bold text-lg mb-2">Shalabh (28)</h3>
                                 <p class="text-slateLight text-xs italic mb-4 leading-relaxed">
-                                    "Discount brokers leave you stranded during a crash. There is no expert safety net."
+                                    "Discount brokers treat users like simple code lines. When the server goes down, you are entirely on your own."
                                 </p>
                             </div>
                             <p class="text-slateGray text-xs border-t border-white/10 pt-4 mt-4">
-                                <strong>Insight:</strong> High-volume options trader feels discount brokers treat users purely as execution pipelines with zero advice.
+                                <strong>Insight:</strong> High-volume options trader feels discount brokers lack human support and expert advice during market crashes.
                             </p>
                         </div>
                         <div class="bg-navyLight border border-white/5 rounded-xl p-6 shadow-lg flex flex-col justify-between h-full">
@@ -433,7 +537,7 @@
                                 </p>
                             </div>
                             <p class="text-slateGray text-xs border-t border-white/10 pt-4 mt-4">
-                                <strong>Insight:</strong> Day trader in Indore experiencing peak morning minutes execution latency.
+                                <strong>Insight:</strong> Day trader in Indore experiencing peak morning minutes execution latency (3-5 seconds UI latency).
                             </p>
                         </div>
                         <div class="bg-navyLight border border-white/5 rounded-xl p-6 shadow-lg flex flex-col justify-between h-full">
@@ -467,7 +571,7 @@
                                 </p>
                             </div>
                             <p class="text-slateGray text-xs border-t border-navy/10 pt-4 mt-4">
-                                <strong>Friction:</strong> Completed KYC but never funded. Faced immediate cold-start choice paralysis.
+                                <strong>Friction:</strong> Completed KYC but never funded. Faced immediate cold-start choice paralysis due to jargon and complex watchlist.
                             </p>
                         </div>
                         <div class="bg-white border border-peach/30 rounded-xl p-6 shadow-sm flex flex-col justify-between h-full">
@@ -552,13 +656,13 @@
                                     <td class="p-4 text-peach font-bold">Pre-KYC Practice Wallet</td>
                                 </tr>
                                 <tr class="hover:bg-white/5 transition">
-                                    <td class="p-4 font-bold">Activation</td>
+                                    <td class="p-4 font-bold">Advisory</td>
                                     <td class="p-4">Watchlist cold-start</td>
                                     <td class="p-4">Choice Paralysis</td>
                                     <td class="p-4 text-peach font-bold">Onboarding Wizard</td>
                                 </tr>
                                 <tr class="hover:bg-white/5 transition">
-                                    <td class="p-4 font-bold">Advisory</td>
+                                    <td class="p-4 font-bold">Activation</td>
                                     <td class="p-4">F&O isolation, Loss</td>
                                     <td class="p-4">Finfluencer Traps</td>
                                     <td class="p-4 text-peach font-bold">Heritage AI Concierge</td>
@@ -646,7 +750,7 @@
                         <div class="lg:col-span-4">
                             <h3 class="font-title font-extrabold text-xl text-navy mb-3">Likert 1–5 Mean Validation</h3>
                             <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                                Quantitative survey results clearly show that onboarding friction, cold starts, and complex interface layers are rated as primary barriers preventing registration completion.
+                                Quantitative survey results (N=200) clearly show that onboarding friction, cold starts, and complex interface layers are rated as primary barriers preventing registration completion.
                             </p>
                         </div>
                         <div class="lg:col-span-8 bg-white border border-navy/10 rounded-xl p-6 shadow-sm flex flex-col gap-6">
@@ -687,30 +791,34 @@
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">15 / BENCHMARKING</span>
                         <h2 class="text-white font-title font-extrabold text-3xl mb-6">Competitive Sentiment & <span class="text-lime">Mindshare</span></h2>
                     </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 my-auto">
-                        <div class="bg-navyLight border border-white/5 rounded-xl p-6 shadow-lg">
-                            <h3 class="text-lime font-title font-bold text-base uppercase tracking-wider mb-6">Sentiment Polarity Index (SPI)</h3>
-                            <div class="flex flex-col gap-4">
-                                <div class="flex justify-between items-center">
-                                    <span>Zerodha (Clean but silent/no active advice)</span>
-                                    <span class="text-lime font-bold">+0.58 SPI</span>
-                                </div>
-                                <div class="w-full bg-navyDark h-2.5 rounded-full overflow-hidden">
-                                    <div class="bg-[#387ed1] h-full" style="width: 79%"></div>
-                                </div>
-                                <div class="flex justify-between items-center mt-2">
-                                    <span>Groww (Frictionless setup but system lags)</span>
-                                    <span class="text-lime font-bold">+0.42 SPI</span>
-                                </div>
-                                <div class="w-full bg-navyDark h-2.5 rounded-full overflow-hidden">
-                                    <div class="bg-[#00D09C] h-full" style="width: 71%"></div>
-                                </div>
-                                <div class="flex justify-between items-center mt-2">
-                                    <span class="text-peach font-bold">ArihantPlus (Exceptional trust but lacks visibility)</span>
-                                    <span class="text-peach font-bold">+0.18 SPI</span>
-                                </div>
-                                <div class="w-full bg-navyDark h-2.5 rounded-full overflow-hidden">
-                                    <div class="bg-peach h-full" style="width: 59%"></div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 my-auto items-center">
+                        <div class="bg-navyLight border border-white/5 rounded-xl p-6 shadow-lg flex flex-col items-center">
+                            <h3 class="text-lime font-title font-bold text-sm uppercase tracking-wider mb-6 text-center">Brand Sentiment Share (N=540)</h3>
+                            
+                            <!-- Pure SVG Interactive Pie Chart matching SP Jain specifications -->
+                            <div class="flex items-center gap-6">
+                                <svg width="150" height="150" viewBox="0 0 36 36" class="transform -rotate-90">
+                                    <circle cx="18" cy="18" r="15.915" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="4"/>
+                                    <!-- Zerodha: 49.2% (Blue) -->
+                                    <circle cx="18" cy="18" r="15.915" fill="none" stroke="#387ed1" stroke-width="4.2" stroke-dasharray="49.2 50.8" stroke-dashoffset="0"/>
+                                    <!-- Groww: 35.6% (Peach) -->
+                                    <circle cx="18" cy="18" r="15.915" fill="none" stroke="#E07A5F" stroke-width="4" stroke-dasharray="35.6 64.4" stroke-dashoffset="-49.2"/>
+                                    <!-- ArihantPlus: 15.3% (Lime) -->
+                                    <circle cx="18" cy="18" r="15.915" fill="none" stroke="#D9F077" stroke-width="4" stroke-dasharray="15.3 84.7" stroke-dashoffset="-84.8"/>
+                                </svg>
+                                <div class="flex flex-col gap-2 text-xs">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-3 h-3 bg-[#387ed1] rounded-sm"></div>
+                                        <span>Zerodha: <strong>49.2%</strong></span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-3 h-3 bg-[#E07A5F] rounded-sm"></div>
+                                        <span>Groww: <strong>35.6%</strong></span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-3 h-3 bg-[#D9F077] rounded-sm"></div>
+                                        <span>ArihantPlus: <strong>15.3%</strong></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -743,17 +851,17 @@
                         </div>
                         <div class="bg-navyLight border border-white/5 rounded-2xl p-6 flex flex-col justify-center items-center shadow-lg">
                             <span class="text-lime font-title font-bold text-xs uppercase tracking-wider block mb-4">Aided Search Interest Index (12M Trend)</span>
-                            <!-- Clean SVG Graph Representation of the Gap -->
+                            <!-- Clean SVG Graph Representation of the Gap (With Hardcoded Hex Colors to ensure visibility) -->
                             <svg class="w-full max-w-[400px] h-[180px]" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
-                                <line x1="10" y1="30" x2="390" y2="30" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-                                <line x1="10" y1="90" x2="390" y2="90" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-                                <line x1="10" y1="150" x2="390" y2="150" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-                                <!-- Top Competitor Line (Peach) -->
-                                <path d="M10 140 Q100 60, 200 50 T390 15" fill="none" stroke="var(--peach)" stroke-width="3" />
-                                <!-- Arihant Flat Line (Lime) -->
-                                <path d="M10 155 Q100 155, 200 150 T390 145" fill="none" stroke="var(--lime)" stroke-width="3" />
-                                <text x="20" y="25" fill="var(--peach)" font-size="10" font-family="sans-serif">Competitors (Index: 100)</text>
-                                <text x="20" y="135" fill="var(--lime)" font-size="10" font-family="sans-serif">ArihantPlus (Index: 12)</text>
+                                <line x1="10" y1="30" x2="390" y2="30" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                                <line x1="10" y1="90" x2="390" y2="90" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                                <line x1="10" y1="150" x2="390" y2="150" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                                <!-- Top Competitor Line (Peach HEX: #E07A5F) -->
+                                <path d="M10 140 Q100 60, 200 50 T390 15" fill="none" stroke="#E07A5F" stroke-width="3" />
+                                <!-- Arihant Flat Line (Lime HEX: #D9F077) -->
+                                <path d="M10 155 Q100 155, 200 150 T390 145" fill="none" stroke="#D9F077" stroke-width="3" />
+                                <text x="20" y="25" fill="#E07A5F" font-size="10" font-family="sans-serif">Competitors (Index: 100)</text>
+                                <text x="20" y="135" fill="#D9F077" font-size="10" font-family="sans-serif">ArihantPlus (Index: 12)</text>
                             </svg>
                         </div>
                     </div>
@@ -1173,6 +1281,26 @@
                 updateSlideDisplay();
             }
         }
+
+        function toggleFullscreen() {
+            const deckCanvas = document.getElementById('deck-canvas');
+            if (!document.fullscreenElement) {
+                deckCanvas.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        document.addEventListener('fullscreenchange', () => {
+            const btn = document.getElementById('fullscreen-btn');
+            if (document.fullscreenElement) {
+                btn.innerHTML = '<i class="fa-solid fa-compress"></i> Exit Full';
+            } else {
+                btn.innerHTML = '<i class="fa-solid fa-expand"></i> Full Screen';
+            }
+        });
 
         // Listen for standard presentation keyboard buttons
         document.addEventListener('keydown', function(event) {
