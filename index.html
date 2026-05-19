@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Driving App-First Growth for ArihantPlus - Industry Business Project</title>
+    <title>Driving App-First Growth for ArihantPlus - SP Jain Corporate Presentation</title>
     <!-- Tailwind CSS for high-performance responsive layout utility -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Premium Fonts -->
@@ -12,6 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- High-Fidelity Confetti Engine -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     
     <script>
         tailwind.config = {
@@ -132,11 +135,11 @@
 <body class="bg-navyDark text-slateLight min-h-screen flex flex-col justify-between overflow-hidden">
 
     <!-- Ambient Grid Background -->
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(217,240,119,0.05),transparent_40%)] pointer-events-none z-0"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(217,240,119,0.05),transparent_40%)] pointer-events-none z-0 animate-pulse"></div>
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(224,122,95,0.05),transparent_40%)] pointer-events-none z-0"></div>
 
     <!-- HEADER / NAVIGATION CONTROLS -->
-    <header class="w-full bg-navy/90 backdrop-blur border-b border-white/10 px-8 py-4 flex justify-between items-center z-20 relative no-print">
+    <header class="w-full bg-navy/90 backdrop-blur border-b border-white/10 px-8 py-4 flex flex-wrap gap-y-3 justify-between items-center z-20 relative no-print">
         <div class="flex items-center gap-4">
             <span class="text-lime font-title font-bold tracking-widest text-xs uppercase bg-navyLight px-3 py-1.5 rounded-full border border-white/5">
                 SP Jain Final Presentation Deck
@@ -147,13 +150,25 @@
             </span>
         </div>
         
-        <!-- Dropdown Jump to Slide & Feature Buttons -->
-        <div class="flex items-center gap-3">
-            <label for="slide-select" class="text-xs text-slateGray font-title font-bold">JUMP TO:</label>
+        <!-- Theme Selector, Quick Jump, Full Screen & Confetti Buttons -->
+        <div class="flex items-center flex-wrap gap-2">
+            <!-- Dynamic Theme Selector -->
+            <div class="flex bg-navyLight border border-white/10 rounded-lg p-0.5 mr-2">
+                <button onclick="setGlobalTheme('mixed')" id="theme-btn-mixed" class="text-[10px] font-bold px-2.5 py-1.5 rounded-md transition bg-peach text-white" title="Mixed dark/light presentation scheme">Mixed</button>
+                <button onclick="setGlobalTheme('dark')" id="theme-btn-dark" class="text-[10px] font-bold px-2.5 py-1.5 rounded-md transition text-slateGray hover:text-white" title="Force premium dark boardroom scheme">Dark</button>
+                <button onclick="setGlobalTheme('light')" id="theme-btn-light" class="text-[10px] font-bold px-2.5 py-1.5 rounded-md transition text-slateGray hover:text-white" title="Force pristine high-contrast light scheme">Light</button>
+            </div>
+
+            <label for="slide-select" class="text-xs text-slateGray font-title font-bold hidden sm:inline">JUMP TO:</label>
             <select id="slide-select" onchange="jumpToSlide(this.value)" class="bg-navyLight border border-white/10 text-xs text-lime font-bold rounded-lg px-3 py-2 outline-none cursor-pointer focus:border-peach mr-2">
                 <!-- Dropdown items dynamically populated -->
             </select>
             
+            <!-- CELEBRATION BUTTON -->
+            <button onclick="triggerConfettiShower()" class="bg-navyLight hover:bg-lime border border-white/10 hover:border-lime text-xs text-slateLight hover:text-navy font-bold rounded-lg px-3 py-2 transition flex items-center gap-1.5" title="Celebrate presentation milestone">
+                🎉 Celebrate
+            </button>
+
             <!-- EXPORT TO PDF -->
             <button onclick="window.print()" class="bg-navyLight hover:bg-peach border border-white/10 hover:border-peach text-xs text-slateLight hover:text-white font-bold rounded-lg px-3 py-2 transition flex items-center gap-1.5" title="Export Presentation as PDF">
                 <i class="fa-solid fa-file-pdf"></i> Download PDF
@@ -173,8 +188,8 @@
             <!-- Slides Container -->
             <div class="flex-grow relative overflow-y-auto">
 
-                <!-- SLIDE 1: WELCOME & COVER -->
-                <section id="slide-1" class="slide absolute inset-0 p-12 flex flex-col justify-center items-center text-center bg-gradient-to-br from-navy to-navyDark">
+                <!-- SLIDE 1: WELCOME & COVER (DARK) -->
+                <section id="slide-1" data-default-theme="dark" class="slide absolute inset-0 p-12 flex flex-col justify-center items-center text-center bg-gradient-to-br from-navy to-navyDark">
                     <span class="text-peach font-title font-extrabold tracking-[0.25em] text-sm uppercase mb-4">STRATEGIC GROWTH AUDIT 2026</span>
                     <h1 class="text-white font-title font-extrabold text-5xl lg:text-6xl tracking-tight mb-4">
                         Invest. Trade. Grow. <span class="text-peach">Repeat.</span>
@@ -197,8 +212,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 2: EXECUTIVE SUMMARY -->
-                <section id="slide-2" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                <!-- SLIDE 2: EXECUTIVE SUMMARY (LIGHT) -->
+                <section id="slide-2" data-default-theme="light" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">01 / OVERVIEW</span>
                         <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Executive <span class="text-peach">Summary</span></h2>
@@ -222,7 +237,7 @@
                             <div class="bg-navy text-white rounded-xl p-6 border-l-4 border-peach shadow-lg">
                                 <span class="text-lime font-title font-bold text-sm block mb-1"><i class="fa-solid fa-circle-exclamation mr-2 text-lime animate-pulse"></i>THE ONBOARDING LEAK</span>
                                 <p class="text-slateGray text-sm leading-relaxed">
-                                    Upfront KYC document demands trigger immediate "document anxiety," resulting in a substantial.<strong class="text-white">35% user drop-off</strong> during registration.
+                                    Upfront KYC document demands trigger immediate "document anxiety," resulting in a substantial <strong class="text-white">35% user drop-off</strong> during registration.
                                 </p>
                             </div>
                             <div class="bg-navy text-white rounded-xl p-6 border-l-4 border-peach shadow-lg">
@@ -238,14 +253,14 @@
                     </p>
                 </section>
 
-                <!-- SLIDE 3: PROBLEM STATEMENT -->
-                <section id="slide-3" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy">
+                <!-- SLIDE 3: PROBLEM STATEMENT (DARK) -->
+                <section id="slide-3" data-default-theme="dark" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">02 / FUNNEL FRICTION</span>
                         <h2 class="text-white font-title font-extrabold text-3xl mb-4">The Onboarding & <span class="text-lime">Activation Funnel Leak</span></h2>
                     </div>
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 my-auto items-center">
-                        <div class="lg:col-span-5 flex flex-col gap-5">
+                        <div class="lg:col-span-5 flex flex-col gap-4">
                             <div class="border-l-2 border-peach pl-4 py-1">
                                 <h3 class="text-white font-title font-bold text-base mb-1">Document Hesitancy</h3>
                                 <p class="text-slateGray text-xs leading-relaxed">Demanding sensitive credentials (PAN/Aadhaar) before demonstrating product value stops curious prospects immediately.</p>
@@ -258,8 +273,9 @@
                                 <h3 class="text-white font-title font-bold text-base mb-1">Transactional Reactance</h3>
                                 <p class="text-slateGray text-xs leading-relaxed">Automated notifications relying on generic push messages create platform fatigue and drive app uninstallation.</p>
                             </div>
-                            <div class="border-l-2 border-peach pl-4 py-1">
-                                <p class="text-white font-title font-bold text-base mb-1">The figures shown here are directional modeling estimates derived from our survey responses, qualitative interviews, behavioural analysis, and comparative fintech benchmarks. These are intended to demonstrate potential strategic impact rather than guaranteed operational outcomes.</p>
+                            <!-- Boardroom Modeling Disclaimer -->
+                            <div class="border-l-2 border-slateGray pl-4 py-1 mt-2">
+                                <p class="text-slateGray font-sans text-[10px] leading-relaxed">The figures shown here are directional modeling estimates derived from our survey responses, qualitative interviews, behavioural analysis, and comparative fintech benchmarks. These are intended to demonstrate potential strategic impact rather than guaranteed operational outcomes.</p>
                             </div>
                         </div>
                         
@@ -317,8 +333,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 4: RESEARCH FRAMEWORK -->
-                <section id="slide-4" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                <!-- SLIDE 4: RESEARCH FRAMEWORK (LIGHT) -->
+                <section id="slide-4" data-default-theme="light" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">03 / FRAMEWORK</span>
                         <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Research <span class="text-peach">Framework</span></h2>
@@ -361,8 +377,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 5: LIT REVIEW I -->
-                <section id="slide-5" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                <!-- SLIDE 5: LIT REVIEW I (LIGHT) -->
+                <section id="slide-5" data-default-theme="light" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">04 / LITERATURE REVIEW</span>
                         <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Lit Review: <span class="text-peach">Trust & Perceived Risk</span></h2>
@@ -392,8 +408,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 6: LIT REVIEW II -->
-                <section id="slide-6" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                <!-- SLIDE 6: LIT REVIEW II (DARK) -->
+                <section id="slide-6" data-default-theme="dark" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">05 / LITERATURE REVIEW</span>
                         <h2 class="text-white font-title font-extrabold text-3xl mb-6">Lit Review: <span class="text-lime">Technology Acceptance & Cognitive Load</span></h2>
@@ -422,8 +438,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 7: LIT REVIEW III -->
-                <section id="slide-7" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                <!-- SLIDE 7: LIT REVIEW III (LIGHT) -->
+                <section id="slide-7" data-default-theme="light" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">06 / LITERATURE REVIEW</span>
                         <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Lit Review: <span class="text-peach">Social Proof & Motivation</span></h2>
@@ -450,8 +466,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 8: THE RESEARCH GAP -->
-                <section id="slide-8" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                <!-- SLIDE 8: THE RESEARCH GAP (DARK) -->
+                <section id="slide-8" data-default-theme="dark" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">07 / THE FOCUS</span>
                         <h2 class="text-white font-title font-extrabold text-3xl mb-6">The <span class="text-lime">Research Gap</span></h2>
@@ -478,8 +494,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 9: RESEARCH METHODOLOGY -->
-                <section id="slide-9" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                <!-- SLIDE 9: RESEARCH METHODOLOGY (LIGHT) -->
+                <section id="slide-9" data-default-theme="light" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">08 / METHODOLOGY</span>
                         <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Research <span class="text-peach">Methodology Design</span></h2>
@@ -512,8 +528,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 10: QUALITATIVE COHORT I (ACTIVE TRADERS - PICTURE FREE) -->
-                <section id="slide-10" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                <!-- SLIDE 10: QUALITATIVE COHORT I (ACTIVE TRADERS - DARK) -->
+                <section id="slide-10" data-default-theme="dark" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">09 / QUALITATIVE FINDINGS</span>
                         <h2 class="text-white font-title font-extrabold text-3xl mb-6">Qualitative Insights: <span class="text-lime">Active Traders</span></h2>
@@ -558,8 +574,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 11: QUALITATIVE COHORT II (DORMANT - PICTURE FREE) -->
-                <section id="slide-11" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                <!-- SLIDE 11: QUALITATIVE COHORT II (DORMANT - LIGHT) -->
+                <section id="slide-11" data-default-theme="light" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">10 / QUALITATIVE FINDINGS</span>
                         <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Qualitative Insights: <span class="text-peach">Dormant & Lost Leads</span></h2>
@@ -604,8 +620,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 12: QUALITATIVE COHORT III -->
-                <section id="slide-12" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                <!-- SLIDE 12: QUALITATIVE COHORT III (LIGHT) -->
+                <section id="slide-12" data-default-theme="light" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">11 / QUALITATIVE FINDINGS</span>
                         <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Qualitative Insights: <span class="text-peach">Competitor Benchmarks</span></h2>
@@ -635,8 +651,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 13: THEMATIC MATRIX -->
-                <section id="slide-13" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                <!-- SLIDE 13: THEMATIC MATRIX (DARK) -->
+                <section id="slide-13" data-default-theme="dark" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">12 / SYNTHESIS</span>
                         <h2 class="text-white font-title font-extrabold text-3xl mb-6">Thematic <span class="text-lime">Synthesis Matrix</span></h2>
@@ -681,8 +697,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 14: QUANTITATIVE DEMOGRAPHICS -->
-                <section id="slide-14" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                <!-- SLIDE 14: QUANTITATIVE DEMOGRAPHICS (LIGHT) -->
+                <section id="slide-14" data-default-theme="light" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">13 / QUANTITATIVE FINDINGS</span>
                         <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Quantitative Insights: <span class="text-peach">Demographics (N = 213)</span></h2>
@@ -743,8 +759,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 15: QUANTITATIVE ONBOARDING BARRIERS -->
-                <section id="slide-15" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                <!-- SLIDE 15: QUANTITATIVE ONBOARDING BARRIERS (LIGHT) -->
+                <section id="slide-15" data-default-theme="light" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">14 / QUANTITATIVE FINDINGS</span>
                         <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Quantitative Insights: <span class="text-peach">Onboarding Barriers</span></h2>
@@ -788,8 +804,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 16: REGRESSION ANALYSIS -->
-                <section id="slide-16" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                <!-- SLIDE 16: REGRESSION ANALYSIS (DARK) -->
+                <section id="slide-16" data-default-theme="dark" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">15 / STATISTICAL VALIDATION</span>
                         <h2 class="text-white font-title font-extrabold text-3xl mb-4">Regression Analysis: <span class="text-lime">Drivers of App Abandonment</span></h2>
@@ -859,8 +875,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 17: COMPETITIVE SENTIMENT AUDIT -->
-                <section id="slide-17" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                <!-- SLIDE 17: COMPETITIVE SENTIMENT AUDIT (DARK) -->
+                <section id="slide-17" data-default-theme="dark" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">16 / BENCHMARKING</span>
                         <h2 class="text-white font-title font-extrabold text-3xl mb-6">Competitive Sentiment & <span class="text-lime">Mindshare</span></h2>
@@ -908,8 +924,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 18: DIGITAL VISIBILITY GAP -->
-                <section id="slide-18" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                <!-- SLIDE 18: DIGITAL VISIBILITY GAP (DARK) -->
+                <section id="slide-18" data-default-theme="dark" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">17 / AUDIT DEFICIT</span>
                         <h2 class="text-white font-title font-extrabold text-3xl mb-6">Digital <span class="text-lime">Visibility Gap</span></h2>
@@ -941,8 +957,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 19: DIGITAL PRESENCE AUDIT (SCREENER.IN) -->
-                <section id="slide-19" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                <!-- SLIDE 19: DIGITAL PRESENCE AUDIT (LIGHT) -->
+                <section id="slide-19" data-default-theme="light" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">18 / AUDIT EVIDENCE</span>
                         <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Digital Presence: <span class="text-peach">Corporate Audit Metrics</span></h2>
@@ -990,8 +1006,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 20: SOLUTION I -->
-                <section id="slide-20" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                <!-- SLIDE 20: SOLUTION I (LIGHT) -->
+                <section id="slide-20" data-default-theme="light" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">19 / RECOMMENDATIONS</span>
                         <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Solution I: <span class="text-peach">Pre-KYC Onboarding Hub</span></h2>
@@ -1036,8 +1052,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 21: FUNNEL OPTIMIZATION STRATEGY -->
-                <section id="slide-21" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                <!-- SLIDE 21: FUNNEL OPTIMIZATION STRATEGY (LIGHT) -->
+                <section id="slide-21" data-default-theme="light" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">20 / RECOMMENDATIONS</span>
                         <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Funnel <span class="text-peach">Optimization Strategy</span></h2>
@@ -1064,8 +1080,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 22: SOLUTION II -->
-                <section id="slide-22" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                <!-- SLIDE 22: SOLUTION II (DARK) -->
+                <section id="slide-22" data-default-theme="dark" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">21 / RECOMMENDATIONS</span>
                         <h2 class="text-white font-title font-extrabold text-3xl mb-6">Solution II: <span class="text-lime">Heritage AI & Native Advisory</span></h2>
@@ -1095,8 +1111,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 23: SOLUTION III -->
-                <section id="slide-23" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                <!-- SLIDE 23: SOLUTION III (LIGHT) -->
+                <section id="slide-23" data-default-theme="light" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">22 / RECOMMENDATIONS</span>
                         <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Solution III: <span class="text-peach">The Arihant League & Roadmap</span></h2>
@@ -1130,8 +1146,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 24: COMMUNITY GROWTH -->
-                <section id="slide-24" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                <!-- SLIDE 24: COMMUNITY GROWTH (DARK) -->
+                <section id="slide-24" data-default-theme="dark" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">23 / RECOMMENDATIONS</span>
                         <h2 class="text-white font-title font-extrabold text-3xl mb-6">Community-Led <span class="text-lime">Growth Programs</span></h2>
@@ -1158,8 +1174,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 25: CONVERSION PROBABILITY SIMULATOR -->
-                <section id="slide-25" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                <!-- SLIDE 25: CONVERSION PROBABILITY SIMULATOR (DARK) -->
+                <section id="slide-25" data-default-theme="dark" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">24 / FUNNEL MODELING</span>
                         <h2 class="text-white font-title font-extrabold text-3xl mb-4">Onboarding <span class="text-lime">Probability Simulator</span></h2>
@@ -1239,8 +1255,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 26: ROI & CAC ANALYSIS WITH STEP-DOWN WATERFALL FUNNEL -->
-                <section id="slide-26" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                <!-- SLIDE 26: ROI & CAC ANALYSIS WITH STEP-DOWN WATERFALL FUNNEL (DARK) -->
+                <section id="slide-26" data-default-theme="dark" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">24 / STRATEGIC INVESTMENT</span>
                         <h2 class="text-white font-title font-extrabold text-3xl mb-6">ROI & <span class="text-lime">Optimized CAC Analysis</span></h2>
@@ -1330,8 +1346,8 @@
                     </div>
                 </section>
 
-                <!-- SLIDE 27: GOVERNANCE, COMPLIANCE & Q&A -->
-                <section id="slide-27" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                <!-- SLIDE 27: GOVERNANCE, COMPLIANCE & Q&A (DARK) -->
+                <section id="slide-27" data-default-theme="dark" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
                     <div>
                         <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">25 / COMPLIANCE & CONCLUSION</span>
                         <h2 class="text-white font-title font-extrabold text-3xl mb-6">Governance, <span class="text-lime">Compliance & Q&A</span></h2>
@@ -1365,7 +1381,7 @@
             </div>
 
             <!-- CONTROLS FOOTER -->
-            <footer class="h-16 bg-navyDark border-t border-white/10 px-8 flex justify-between items-center z-10 relative">
+            <footer class="h-16 bg-navyDark border-t border-white/10 px-8 flex justify-between items-center z-10 relative no-print">
                 <button onclick="changeSlide(-1)" id="prev-btn" class="text-xs text-slateGray hover:text-lime font-title font-bold tracking-wider uppercase transition flex items-center gap-2">
                     <i class="fa-solid fa-arrow-left"></i> Prev
                 </button>
@@ -1384,7 +1400,7 @@
     </main>
 
     <!-- INSTRUCTIONS AND META info -->
-    <div class="w-full text-center py-4 bg-navyDark border-t border-white/5 text-[11px] text-slateGray relative z-20">
+    <div class="w-full text-center py-4 bg-navyDark border-t border-white/5 text-[11px] text-slateGray relative z-20 no-print">
         <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-x-6 gap-y-2">
             <span><i class="fa-solid fa-keyboard mr-1"></i> Use <strong>Left / Right Arrow</strong> Keys</span>
             <span>•</span>
@@ -1398,6 +1414,7 @@
     <script>
         const totalSlidesCount = 27;
         let activeSlideIndex = 1;
+        let currentThemeMode = 'mixed'; // mixed, dark, light
 
         // Populate quick jump options dynamically
         const jumpSelect = document.getElementById('slide-select');
@@ -1437,6 +1454,69 @@
             opt.innerText = header;
             jumpSelect.appendChild(opt);
         });
+
+        // Dynamic Global Theme Toggle Controller
+        function setGlobalTheme(themeMode) {
+            currentThemeMode = themeMode;
+            
+            // Toggle active status UI colors on header buttons
+            const modes = ['mixed', 'dark', 'light'];
+            modes.forEach(mode => {
+                const btn = document.getElementById(`theme-btn-${mode}`);
+                if (mode === themeMode) {
+                    btn.className = "text-[10px] font-bold px-2.5 py-1.5 rounded-md transition bg-peach text-white";
+                } else {
+                    btn.className = "text-[10px] font-bold px-2.5 py-1.5 rounded-md transition text-slateGray hover:text-white";
+                }
+            });
+
+            // Iterate and apply CSS layouts to slides
+            for (let i = 1; i <= totalSlidesCount; i++) {
+                const slide = document.getElementById(`slide-${i}`);
+                if (!slide) continue;
+
+                // Determine target style scheme
+                let finalTheme = slide.getAttribute('data-default-theme');
+                if (themeMode === 'dark') {
+                    finalTheme = 'dark';
+                } else if (themeMode === 'light') {
+                    finalTheme = 'light';
+                }
+
+                // Apply style overrides cleanly
+                if (finalTheme === 'dark') {
+                    slide.className = "slide absolute inset-0 p-12 hidden flex-col justify-between bg-gradient-to-br from-navy to-navyDark text-white";
+                    
+                    // Force white typography targets inside dark scope
+                    const elements = slide.querySelectorAll('h2, h3, h4, p, li, td, th');
+                    elements.forEach(el => {
+                        if (!el.classList.contains('text-peach') && !el.classList.contains('text-lime')) {
+                            el.style.color = '#F1F5F9';
+                        }
+                    });
+                } else {
+                    slide.className = "slide absolute inset-0 p-12 hidden flex-col justify-between bg-cream text-navy";
+                    
+                    // Force dark typography targets inside light scope (forest-green as highlight)
+                    const elements = slide.querySelectorAll('h2, h3, h4, p, li, td, th');
+                    elements.forEach(el => {
+                        if (!el.classList.contains('text-peach') && !el.classList.contains('text-lime')) {
+                            el.style.color = '#0A1D37';
+                        }
+                    });
+                }
+            }
+            updateSlideDisplay();
+        }
+
+        // Celebrate Presentation Milestone Confetti Trigger
+        function triggerConfettiShower() {
+            confetti({
+                particleCount: 150,
+                spread: 80,
+                origin: { y: 0.6 }
+            });
+        }
 
         // Interactive Onboarding Funnel Simulator Engine
         function runFunnelSimulation() {
@@ -1496,6 +1576,11 @@
 
             // Update dropdown values matching current index
             jumpSelect.value = activeSlideIndex;
+
+            // Celebrate automatically upon reaching Slide 27 (Compliance & Q&A)
+            if (activeSlideIndex === totalSlidesCount) {
+                triggerConfettiShower();
+            }
         }
 
         function changeSlide(direction) {
@@ -1547,6 +1632,7 @@
 
         // Initialize view states
         runFunnelSimulation();
+        setGlobalTheme('mixed');
         updateSlideDisplay();
     </script>
 
