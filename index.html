@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driving App-First Growth for ArihantPlus - SP Jain Corporate Presentation</title>
+    <!-- Tailwind CSS for high-performance responsive layout utility -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0A1D37',
+                        navyLight: '#162C4E',
+                        navyDark: '#051020',
+                        peach: '#E07A5F',
+                        lime: '#D9F077',
+                        cream: '#FAF8F5',
+                        slateLight: '#F1F5F9',
+                        slateGray: '#94A3B8',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        title: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .slide-transition {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(217, 240, 119, 0.2);
+        }
+        /* Hide scrollbars for presentation mode */
+        body {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-navyDark text-slateLight min-h-screen flex flex-col justify-between overflow-hidden">
+
+    <!-- Ambient Grid Background -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(217,240,119,0.05),transparent_40%)] pointer-events-none z-0"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(224,122,95,0.05),transparent_40%)] pointer-events-none z-0"></div>
+
+    <!-- HEADER / NAVIGATION CONTROLS -->
+    <header class="w-full bg-navy/90 backdrop-blur border-b border-white/10 px-8 py-4 flex justify-between items-center z-20 relative">
+        <div class="flex items-center gap-4">
+            <span class="text-lime font-title font-bold tracking-widest text-xs uppercase bg-navyLight px-3 py-1.5 rounded-full border border-white/5">
+                SP Jain Final Presentation Deck
+            </span>
+            <div class="h-4 w-[1px] bg-white/10"></div>
+            <span class="text-white font-title font-medium text-sm hidden md:inline">
+                ArihantPlus Growth Audit
+            </span>
+        </div>
+        
+        <!-- Dropdown Jump to Slide -->
+        <div class="flex items-center gap-3">
+            <label for="slide-select" class="text-xs text-slateGray font-title font-bold">JUMP TO:</label>
+            <select id="slide-select" onchange="jumpToSlide(this.value)" class="bg-navyLight border border-white/10 text-xs text-lime font-bold rounded-lg px-3 py-2 outline-none cursor-pointer focus:border-peach">
+                <!-- Dropdown items dynamically populated -->
+            </select>
+        </div>
+    </header>
+
+    <!-- MAIN PRESENTATION CANVAS -->
+    <main class="flex-grow flex items-center justify-center p-4 md:p-8 z-10 relative">
+        <div id="deck-canvas" class="w-full max-w-[1280px] aspect-[16/9] bg-navy border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col relative">
+            
+            <!-- Slides Container -->
+            <div class="flex-grow relative overflow-y-auto">
+
+                <!-- SLIDE 1: WELCOME & COVER -->
+                <section id="slide-1" class="slide absolute inset-0 p-12 flex flex-col justify-center items-center text-center bg-gradient-to-br from-navy to-navyDark">
+                    <span class="text-peach font-title font-extrabold tracking-[0.25em] text-sm uppercase mb-4">MGB STRATEGIC GROWTH AUDIT 2026</span>
+                    <h1 class="text-white font-title font-extrabold text-5xl lg:text-6xl tracking-tight mb-4">
+                        Invest. Trade. Grow. <span class="text-peach">Repeat.</span>
+                    </h1>
+                    <h2 class="text-lime font-title font-bold text-2xl mb-8">
+                        Driving App-First Growth for ArihantPlus
+                    </h2>
+                    <div class="w-24 h-[3px] bg-peach rounded-full mb-8"></div>
+                    <p class="max-w-2xl text-slateGray text-base md:text-lg leading-relaxed mb-12">
+                        A Mixed-Method Strategic Audit Analyzing the Post-KYC Conversion and Activation Gap in Indian Retail Broking
+                    </p>
+                    <div class="flex flex-wrap gap-4 justify-center items-center bg-white/5 px-6 py-3 rounded-full border border-white/5 text-xs text-white font-semibold">
+                        <span>Kanishk Dawar</span>
+                        <span class="text-peach">•</span>
+                        <span>Kanav Garg</span>
+                        <span class="text-peach">•</span>
+                        <span>Amanpreet Singh</span>
+                        <span class="text-peach">•</span>
+                        <span>Yash Rajgarhia</span>
+                    </div>
+                </section>
+
+                <!-- SLIDE 2: EXECUTIVE SUMMARY -->
+                <section id="slide-2" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">01 / OVERVIEW</span>
+                        <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Executive <span class="text-peach">Summary</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 my-auto">
+                        <div class="flex flex-col justify-between">
+                            <div class="bg-navy/5 border border-navy/10 rounded-xl p-6 mb-4">
+                                <span class="text-peach font-title font-bold text-sm block mb-1"><i class="fa-solid fa-bullseye mr-2"></i>THE OBJECTIVE</span>
+                                <p class="text-slate-700 text-sm leading-relaxed">
+                                    Turn the offline institutional heritage of Arihant Capital into an aggressive, digitally native moat to capture India’s Tier-2 and Tier-3 markets.
+                                </p>
+                            </div>
+                            <div class="bg-navy/5 border border-navy/10 rounded-xl p-6">
+                                <span class="text-peach font-title font-bold text-sm block mb-1"><i class="fa-solid fa-map mr-2"></i>THE ROADMAP</span>
+                                <p class="text-slate-700 text-sm leading-relaxed">
+                                    Deploy a three-tier execution system: Pre-KYC Onboarding Hub, "Heritage AI" contextual advisory, and "Arihant League" gamification.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <div class="bg-navy text-white rounded-xl p-6 border-l-4 border-peach shadow-lg">
+                                <span class="text-lime font-title font-bold text-sm block mb-1"><i class="fa-solid fa-circle-exclamation mr-2"></i>THE ONBOARDING LEAK</span>
+                                <p class="text-slateGray text-sm leading-relaxed">
+                                    Upfront KYC document demands trigger immediate "document anxiety," resulting in a substantial <strong class="text-white">35% user drop-off</strong> during registration.
+                                </p>
+                            </div>
+                            <div class="bg-navy text-white rounded-xl p-6 border-l-4 border-peach shadow-lg">
+                                <span class="text-lime font-title font-bold text-sm block mb-1"><i class="fa-solid fa-chart-line-down mr-2"></i>THE ACTIVATION VOID</span>
+                                <p class="text-slateGray text-sm leading-relaxed">
+                                    Churn analysis reveals an <strong class="text-white">82% inactivity cliff</strong> if a newly verified user fails to execute a funded trade within 14 days of account setup.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-slateGray text-xs italic border-l-2 border-peach pl-3 mt-4">
+                        "Bridging the legacy trust gap to activate modern retail investors."
+                    </p>
+                </section>
+
+                <!-- SLIDE 3: PROBLEM STATEMENT -->
+                <section id="slide-3" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">02 / FUNNEL FRICTION</span>
+                        <h2 class="text-white font-title font-extrabold text-3xl mb-4">The Onboarding & <span class="text-lime">Activation Funnel Leak</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 my-auto items-center">
+                        <div class="lg:col-span-5 flex flex-col gap-5">
+                            <div class="border-l-2 border-peach pl-4 py-1">
+                                <h3 class="text-white font-title font-bold text-base mb-1">Document Hesitancy</h3>
+                                <p class="text-slateGray text-xs leading-relaxed">Demanding sensitive credentials (PAN/Aadhaar) before demonstrating product value stops curious prospects immediately.</p>
+                            </div>
+                            <div class="border-l-2 border-peach pl-4 py-1">
+                                <h3 class="text-white font-title font-bold text-base mb-1">Watchlist Cold-Start</h3>
+                                <p class="text-slateGray text-xs leading-relaxed">Post-KYC, users land on a complex, jargon-heavy watchlist without guidance, inducing immediate choice paralysis.</p>
+                            </div>
+                            <div class="border-l-2 border-peach pl-4 py-1">
+                                <h3 class="text-white font-title font-bold text-base mb-1">Transactional Reactance</h3>
+                                <p class="text-slateGray text-xs leading-relaxed">Automated notifications relying on generic push messages create platform fatigue and drive app uninstallation.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Visual Funnel diagram - Clean Overlap Fix -->
+                        <div class="lg:col-span-7 bg-navyDark border border-white/5 rounded-2xl p-6 shadow-xl">
+                            <h4 class="text-white font-title font-bold text-sm uppercase tracking-wider mb-6 flex items-center gap-2">
+                                <i class="fa-solid fa-arrow-down-wide-short text-peach"></i> User Drop-off Flow
+                            </h4>
+                            <div class="flex flex-col gap-3">
+                                <div class="flex items-center justify-between bg-white/5 p-1 rounded-lg gap-4">
+                                    <div class="h-10 w-full bg-gradient-to-r from-lime to-[#b9db45] text-navy font-title font-extrabold text-sm rounded-lg flex items-center px-4">
+                                        App Installs (100%)
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between bg-white/5 p-1 rounded-lg gap-4">
+                                    <div class="h-10 w-[65%] min-w-[180px] bg-gradient-to-r from-lime to-peach text-navy font-title font-extrabold text-sm rounded-lg flex items-center px-4">
+                                        KYC Completed (65%)
+                                    </div>
+                                    <span class="text-peach text-xs font-bold whitespace-nowrap shrink-0 pr-2">
+                                        <i class="fa-solid fa-circle-down mr-1"></i> 35% Drop-off
+                                    </span>
+                                </div>
+                                <div class="flex items-center justify-between bg-white/5 p-1 rounded-lg gap-4">
+                                    <div class="h-10 w-[11.7%] min-w-[160px] bg-peach text-white font-title font-extrabold text-xs rounded-lg flex items-center px-4 whitespace-nowrap">
+                                        Wallet Funded (11.7%)
+                                    </div>
+                                    <span class="text-peach text-xs font-bold whitespace-nowrap shrink-0 pr-2">
+                                        <i class="fa-solid fa-circle-down mr-1"></i> 82% Churn Cliff
+                                    </span>
+                                </div>
+                                <div class="flex items-center justify-between bg-white/5 p-1 rounded-lg gap-4">
+                                    <div class="h-10 w-[4%] min-w-[140px] bg-red-600 text-white font-title font-extrabold text-xs rounded-lg flex items-center px-4 whitespace-nowrap">
+                                        Active Retained (2.1%)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 4: RESEARCH FRAMEWORK -->
+                <section id="slide-4" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">03 / FRAMEWORK</span>
+                        <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Research <span class="text-peach">Framework</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 my-auto">
+                        <div class="bg-navy text-white rounded-xl p-8 border-l-4 border-peach shadow-lg">
+                            <span class="text-peach font-title font-bold text-xs block mb-3 uppercase tracking-wider">DEVELOPED RESEARCH QUESTIONS (DRQs)</span>
+                            <ul class="flex flex-col gap-4 text-slateLight text-sm leading-relaxed">
+                                <li class="flex gap-2">
+                                    <span class="text-lime font-bold">1.</span>
+                                    <span>What specific psychological and technical hurdles drive KYC abandonment in Tier-2/3 metropolitan areas?</span>
+                                </li>
+                                <li class="flex gap-2">
+                                    <span class="text-lime font-bold">2.</span>
+                                    <span>How do marketing propositions of top-tier rivals (Zerodha, Groww, Upstox) impact user brand-switching habits?</span>
+                                </li>
+                                <li class="flex gap-2">
+                                    <span class="text-lime font-bold">3.</span>
+                                    <span>Which in-app "nudges" reduce onboarding friction and activation delays by >15%?</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-white text-navy rounded-xl p-8 border-l-4 border-lime shadow-lg border border-navy/5">
+                            <span class="text-peach font-title font-bold text-xs block mb-3 uppercase tracking-wider">RESEARCH OBJECTIVES (ROs)</span>
+                            <ul class="flex flex-col gap-4 text-slate-700 text-sm leading-relaxed">
+                                <li class="flex gap-2">
+                                    <span class="text-navy font-extrabold">1.</span>
+                                    <span>Map precise user drop-off coordinates in the ArihantPlus digital onboarding journey.</span>
+                                </li>
+                                <li class="flex gap-2">
+                                    <span class="text-navy font-extrabold">2.</span>
+                                    <span>Formulate 5 actionable customer personas with corresponding TAM/SAM/SOM estimates.</span>
+                                </li>
+                                <li class="flex gap-2">
+                                    <span class="text-navy font-extrabold">3.</span>
+                                    <span>Design a SEBI-compliant gamified retention engine (Arihant League) to lower CAC.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 5: LIT REVIEW I -->
+                <section id="slide-5" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">04 / LITERATURE REVIEW</span>
+                        <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Lit Review: <span class="text-peach">Trust & Perceived Risk</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-auto">
+                        <div class="bg-white border border-navy/10 rounded-xl p-6 shadow-sm">
+                            <div class="text-peach text-3xl mb-4"><i class="fa-solid fa-shield-halved"></i></div>
+                            <h3 class="text-navy font-title font-bold text-lg mb-2">PERCEIVED RISK</h3>
+                            <p class="text-slate-600 text-xs leading-relaxed">
+                                Post-2021 literature (Singh et al., 2023) posits that while visual aesthetics drive initial installs, institutional trust is the sole predictor of a user's willingness to commit capital.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-navy/10 rounded-xl p-6 shadow-sm">
+                            <div class="text-peach text-3xl mb-4"><i class="fa-solid fa-scale-balanced"></i></div>
+                            <h3 class="text-navy font-title font-bold text-lg mb-2">REGULATORY SIGNALS</h3>
+                            <p class="text-slate-600 text-xs leading-relaxed">
+                                Sharma and Gupta (2024) observe that Indian retail investors prioritize visible SEBI compliance markers and absolute transparency over aggressive discount pricing models.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-navy/10 rounded-xl p-6 shadow-sm">
+                            <div class="text-peach text-3xl mb-4"><i class="fa-solid fa-landmark"></i></div>
+                            <h3 class="text-navy font-title font-bold text-lg mb-2">LEGACY-DIGITAL TENSION</h3>
+                            <p class="text-slate-600 text-xs leading-relaxed">
+                                Bhatia (2022) notes that users expect full-service heritage safety margins executed through clean, modern, and agile visual interfaces.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 6: LIT REVIEW II -->
+                <section id="slide-6" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">05 / LITERATURE REVIEW</span>
+                        <h2 class="text-white font-title font-extrabold text-3xl mb-6">Lit Review: <span class="text-lime">Technology Acceptance & Cognitive Load</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 my-auto items-center">
+                        <div class="bg-navyLight border border-peach/30 rounded-2xl p-8 text-center shadow-2xl">
+                            <span class="text-peach font-title font-bold text-xs block mb-4 uppercase tracking-wider">CONVERSION FORMULA</span>
+                            <div class="bg-navyDark py-6 px-4 rounded-xl border border-white/5 font-mono text-xl text-glow text-lime">
+                                Onboarding Conversion &prop; <br>
+                                <span class="text-white">Usefulness &times; PEOU</span>
+                                <div class="h-[1px] bg-white/20 w-3/4 mx-auto my-3"></div>
+                                <span class="text-slateGray">Extraneous Cognitive Load</span>
+                            </div>
+                            <p class="text-xs text-slateGray mt-4 leading-relaxed">
+                                Extraneous mental load (jargon, complex forms) exhausts working memory, prompting platform abandonment.
+                            </p>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <p class="text-sm leading-relaxed text-slateLight">
+                                <strong class="text-lime">The Simplicity Paradox:</strong> Venkatesh et al. (2022) confirm PEOU (Ease of Use) is vital for Gen-Z. However, Iyer (2024) proves that seasoned traders associate extreme simplicity with a lack of analytical depth.
+                            </p>
+                            <p class="text-sm leading-relaxed text-slateLight">
+                                <strong class="text-lime">Progress Disclosure:</strong> Kumar (2023) proves that digital completion tracks reduce decision fatigue, lifting KYC completions by 22%.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 7: LIT REVIEW III -->
+                <section id="slide-7" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">06 / LITERATURE REVIEW</span>
+                        <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Lit Review: <span class="text-peach">Social Proof & Motivation</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-auto">
+                        <div class="bg-white border-l-4 border-peach rounded-r-xl p-6 shadow-sm">
+                            <span class="text-peach font-title font-bold text-xs block mb-2 uppercase tracking-wider">TELEGRAM EFFECT</span>
+                            <p class="text-slate-600 text-xs leading-relaxed">
+                                Verma (2023) demonstrates that in Indian retail trading, community-led peer validation via informal channels carries 4x more trust and conversion power than corporate display ads.
+                            </p>
+                        </div>
+                        <div class="bg-white border-l-4 border-navy rounded-r-xl p-6 shadow-sm">
+                            <span class="text-navy font-title font-bold text-xs block mb-2 uppercase tracking-wider">INTRINSIC GAMIFICATION</span>
+                            <p class="text-slate-600 text-xs leading-relaxed">
+                                Hamari et al. (2022) prove that extrinsic points/badges decay rapidly. Sustainable gamification must satisfy the user's need for "Competence" (learning to trade).
+                            </p>
+                        </div>
+                        <div class="bg-white border-l-4 border-lime rounded-r-xl p-6 shadow-sm">
+                            <span class="text-lime font-title font-bold text-xs block mb-2 uppercase tracking-wider">VERNACULAR ENGAGEMENT</span>
+                            <p class="text-slate-600 text-xs leading-relaxed">
+                                Desai (2024) establishes that hyper-local, regional content and simplified terminology are the strongest catalysts for Tier-2/3 acquisition.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 8: THE RESEARCH GAP (REMODELED) -->
+                <section id="slide-8" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">07 / THE FOCUS</span>
+                        <h2 class="text-white font-title font-extrabold text-3xl mb-6">The <span class="text-lime">Research Gap</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 my-auto items-center">
+                        <div class="lg:col-span-4 bg-navyLight border border-white/5 rounded-2xl p-6 text-center shadow-lg">
+                            <div class="text-lime text-6xl font-title font-extrabold mb-2">25%</div>
+                            <span class="text-xs text-peach font-title font-bold uppercase tracking-wider block mb-4">Academic Mindshare</span>
+                            <p class="text-xs text-slateGray leading-relaxed">
+                                The "Post-KYC Activation" Paradox remains heavily unexplored in Indian fintech literature.
+                            </p>
+                        </div>
+                        <div class="lg:col-span-8 flex flex-col gap-5">
+                            <p class="text-sm leading-relaxed text-slateLight">
+                                <strong class="text-lime"><i class="fa-solid fa-circle-minus mr-2"></i>The Acquisition Bias:</strong> Most peer-reviewed literature (e.g., Patel, 2022; Mukherjee, 2023) focuses strictly on "App Adoption" (the initial download).
+                            </p>
+                            <p class="text-sm leading-relaxed text-slateLight">
+                                <strong class="text-lime"><i class="fa-solid fa-circle-minus mr-2"></i>The Leaky Bucket Gap:</strong> There is a critical shortage of data analyzing why verified KYC accounts stall before committing capital.
+                            </p>
+                            <p class="text-sm leading-relaxed text-slateLight">
+                                <strong class="text-lime"><i class="fa-solid fa-circle-check mr-2"></i>Research Value:</strong> This strategic audit targets this precise "Leaky Bucket"—uncovering the triggers required to transition an onboarded lead into an active transacting client.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 9: RESEARCH METHODOLOGY -->
+                <section id="slide-9" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">08 / METHODOLOGY</span>
+                        <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Research <span class="text-peach">Methodology Design</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-auto">
+                        <div class="bg-white border border-navy/10 rounded-xl p-6 shadow-sm">
+                            <span class="text-3xl text-peach font-title font-extrabold block mb-2">1</span>
+                            <h3 class="text-navy font-title font-bold text-lg mb-2">QUALITATIVE</h3>
+                            <p class="text-slate-600 text-xs leading-relaxed">
+                                <strong>Tool:</strong> 10 semi-structured In-Depth Interviews (IDIs) and 3 Focus Group Sessions.<br><br>
+                                <strong>Metric:</strong> Uncovering latent psychological friction and document anxiety during onboarding.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-navy/10 rounded-xl p-6 shadow-sm">
+                            <span class="text-3xl text-peach font-title font-extrabold block mb-2">2</span>
+                            <h3 class="text-navy font-title font-bold text-lg mb-2">QUANTITATIVE</h3>
+                            <p class="text-slate-600 text-xs leading-relaxed">
+                                <strong>Tool:</strong> Structured Brand Health & Friction Survey (N=200).<br><br>
+                                <strong>Metric:</strong> Likert scale ranking of user barriers, aided vs. unaided brand recall.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-navy/10 rounded-xl p-6 shadow-sm">
+                            <span class="text-3xl text-peach font-title font-extrabold block mb-2">3</span>
+                            <h3 class="text-navy font-title font-bold text-lg mb-2">SOCIAL LISTENING</h3>
+                            <p class="text-slate-600 text-xs leading-relaxed">
+                                <strong>Tool:</strong> 540 organic user posts analyzed across Reddit, X, and Play Store reviews.<br><br>
+                                <strong>Metric:</strong> Calculating the Sentiment Polarity Index (SPI) across direct competitors.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 10: QUALITATIVE COHORT I (ACTIVE TRADERS - PICTURE FREE) -->
+                <section id="slide-10" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">09 / QUALITATIVE FINDINGS</span>
+                        <h2 class="text-white font-title font-extrabold text-3xl mb-6">Qualitative Insights: <span class="text-lime">Active Traders</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-auto">
+                        <div class="bg-navyLight border border-white/5 rounded-xl p-6 shadow-lg flex flex-col justify-between h-full">
+                            <div>
+                                <span class="text-peach font-title font-bold text-xs uppercase tracking-wider block mb-2">Zerodha User</span>
+                                <h3 class="text-white font-title font-bold text-lg mb-2">Shalabh (28)</h3>
+                                <p class="text-slateLight text-xs italic mb-4 leading-relaxed">
+                                    "Discount brokers leave you stranded during a crash. There is no expert safety net."
+                                </p>
+                            </div>
+                            <p class="text-slateGray text-xs border-t border-white/10 pt-4 mt-4">
+                                <strong>Insight:</strong> High-volume options trader feels discount brokers treat users purely as execution pipelines with zero advice.
+                            </p>
+                        </div>
+                        <div class="bg-navyLight border border-white/5 rounded-xl p-6 shadow-lg flex flex-col justify-between h-full">
+                            <div>
+                                <span class="text-lime font-title font-bold text-xs uppercase tracking-wider block mb-2">Arihant Active</span>
+                                <h3 class="text-white font-title font-bold text-lg mb-2">Sajal (34)</h3>
+                                <p class="text-slateLight text-xs italic mb-4 leading-relaxed">
+                                    "I trust their 30-year legacy, but peak-hour app freeze turns that trust into panic."
+                                </p>
+                            </div>
+                            <p class="text-slateGray text-xs border-t border-white/10 pt-4 mt-4">
+                                <strong>Insight:</strong> Day trader in Indore experiencing peak morning minutes execution latency.
+                            </p>
+                        </div>
+                        <div class="bg-navyLight border border-white/5 rounded-xl p-6 shadow-lg flex flex-col justify-between h-full">
+                            <div>
+                                <span class="text-lime font-title font-bold text-xs uppercase tracking-wider block mb-2">Arihant Active</span>
+                                <h3 class="text-white font-title font-bold text-lg mb-2">Naresh (31)</h3>
+                                <p class="text-slateLight text-xs italic mb-4 leading-relaxed">
+                                    "Their research is brilliant, but opening PDFs on WhatsApp to trade is clunky."
+                                </p>
+                            </div>
+                            <p class="text-slateGray text-xs border-t border-white/10 pt-4 mt-4">
+                                <strong>Insight:</strong> Active swing trader who values Arihant's research desk but dislikes navigating outside the trading screen to read research notes.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 11: QUALITATIVE COHORT II (DORMANT - PICTURE FREE) -->
+                <section id="slide-11" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">10 / QUALITATIVE FINDINGS</span>
+                        <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Qualitative Insights: <span class="text-peach">Dormant & Lost Leads</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-auto">
+                        <div class="bg-white border border-peach/30 rounded-xl p-6 shadow-sm flex flex-col justify-between h-full">
+                            <div>
+                                <span class="text-peach font-title font-bold text-xs uppercase tracking-wider block mb-2">Dormant User</span>
+                                <h3 class="text-navy font-title font-bold text-lg mb-2">Hemant (25)</h3>
+                                <p class="text-slate-600 text-xs italic mb-4 leading-relaxed">
+                                    "I logged in to a wall of red and green numbers. I didn't know how to start my first SIP."
+                                </p>
+                            </div>
+                            <p class="text-slateGray text-xs border-t border-navy/10 pt-4 mt-4">
+                                <strong>Friction:</strong> Completed KYC but never funded. Faced immediate cold-start choice paralysis.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-peach/30 rounded-xl p-6 shadow-sm flex flex-col justify-between h-full">
+                            <div>
+                                <span class="text-peach font-title font-bold text-xs uppercase tracking-wider block mb-2">Drop-off Lead</span>
+                                <h3 class="text-navy font-title font-bold text-lg mb-2">Gaurav (30)</h3>
+                                <p class="text-slate-600 text-xs italic mb-4 leading-relaxed">
+                                    "If the onboarding screen lags, I worry about the safety of my capital."
+                                </p>
+                            </div>
+                            <p class="text-slateGray text-xs border-t border-navy/10 pt-4 mt-4">
+                                <strong>Friction:</strong> Abandoned onboarding mid-KYC due to Aadhaar OTP lag. Weak performance equals weak security to users.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-peach/30 rounded-xl p-6 shadow-sm flex flex-col justify-between h-full">
+                            <div>
+                                <span class="text-peach font-title font-bold text-xs uppercase tracking-wider block mb-2">KYC Hesitant</span>
+                                <h3 class="text-navy font-title font-bold text-lg mb-2">Ankit (24)</h3>
+                                <p class="text-slate-600 text-xs italic mb-4 leading-relaxed">
+                                    "Let me test-drive a virtual demo account first before demanding my sensitive documents."
+                                </p>
+                            </div>
+                            <p class="text-slateGray text-xs border-t border-navy/10 pt-4 mt-4">
+                                <strong>Friction:</strong> Risk-averse beginner uncomfortable sharing personal/bank details before experiencing platform value.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 12: QUALITATIVE COHORT III -->
+                <section id="slide-12" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">11 / QUALITATIVE FINDINGS</span>
+                        <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Qualitative Insights: <span class="text-peach">Competitor Benchmarks</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-auto">
+                        <div class="bg-white border border-navy/10 rounded-xl p-6 shadow-sm">
+                            <span class="text-xs text-lime font-title font-bold uppercase tracking-wider block mb-2 bg-[#00D09C]/10 text-[#00D09C] py-1 px-3.5 rounded-full w-max">Groww User</span>
+                            <h3 class="text-navy font-title font-bold text-lg mb-2 mt-2">Soumyajit (23)</h3>
+                            <p class="text-slate-600 text-xs italic leading-relaxed">
+                                "Groww makes buying stocks as simple as buying shoes, but that doesn't mean smart trading. I often feel left alone when choosing what to trade."
+                            </p>
+                        </div>
+                        <div class="bg-white border border-navy/10 rounded-xl p-6 shadow-sm">
+                            <span class="text-xs text-lime font-title font-bold uppercase tracking-wider block mb-2 bg-[#005A9C]/10 text-[#005A9C] py-1 px-3.5 rounded-full w-max">ICICI Direct User</span>
+                            <h3 class="text-navy font-title font-bold text-lg mb-2 mt-2">Ram (38)</h3>
+                            <p class="text-slate-600 text-xs italic leading-relaxed">
+                                "I want the safety of a legacy brand, but I hate navigating interfaces from 2012. ICICI feels incredibly clunky compared to modern options."
+                            </p>
+                        </div>
+                        <div class="bg-white border border-navy/10 rounded-xl p-6 shadow-sm">
+                            <span class="text-xs text-lime font-title font-bold uppercase tracking-wider block mb-2 bg-[#00D09C]/10 text-[#00D09C] py-1 px-3.5 rounded-full w-max">Groww User</span>
+                            <h3 class="text-navy font-title font-bold text-lg mb-2 mt-2">Sachita (27)</h3>
+                            <p class="text-slate-600 text-xs italic leading-relaxed">
+                                "The moment I see terms like 'Beta' without quick explanations, I feel excluded. Standard investment apps are intimidating."
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 13: THEMATIC MATRIX -->
+                <section id="slide-13" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">12 / SYNTHESIS</span>
+                        <h2 class="text-white font-title font-extrabold text-3xl mb-6">Thematic <span class="text-lime">Synthesis Matrix</span></h2>
+                    </div>
+                    <div class="my-auto overflow-x-auto">
+                        <table class="w-full text-left text-xs md:text-sm border-collapse">
+                            <thead>
+                                <tr class="border-b border-white/20 bg-navyLight/50">
+                                    <th class="p-4 font-title font-bold text-lime">CLUSTER</th>
+                                    <th class="p-4 font-title font-bold text-lime">CODED PAIN POINTS</th>
+                                    <th class="p-4 font-title font-bold text-lime">CORE FRICTION</th>
+                                    <th class="p-4 font-title font-bold text-peach">STRATEGIC PIVOT</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-white/5">
+                                <tr class="hover:bg-white/5 transition">
+                                    <td class="p-4 font-bold">Onboarding</td>
+                                    <td class="p-4">OTP Lags, Document Fear</td>
+                                    <td class="p-4">Privacy Anxiety</td>
+                                    <td class="p-4 text-peach font-bold">Pre-KYC Practice Wallet</td>
+                                </tr>
+                                <tr class="hover:bg-white/5 transition">
+                                    <td class="p-4 font-bold">Activation</td>
+                                    <td class="p-4">Watchlist cold-start</td>
+                                    <td class="p-4">Choice Paralysis</td>
+                                    <td class="p-4 text-peach font-bold">Onboarding Wizard</td>
+                                </tr>
+                                <tr class="hover:bg-white/5 transition">
+                                    <td class="p-4 font-bold">Advisory</td>
+                                    <td class="p-4">F&O isolation, Loss</td>
+                                    <td class="p-4">Finfluencer Traps</td>
+                                    <td class="p-4 text-peach font-bold">Heritage AI Concierge</td>
+                                </tr>
+                                <tr class="hover:bg-white/5 transition">
+                                    <td class="p-4 font-bold">Platform</td>
+                                    <td class="p-4">Execution delays</td>
+                                    <td class="p-4">General UI clutter</td>
+                                    <td class="p-4 text-peach font-bold">Lite vs. Pro Toggle</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- SLIDE 14: QUANTITATIVE DEMOGRAPHICS -->
+                <section id="slide-14" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">13 / QUANTITATIVE FINDINGS</span>
+                        <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Quantitative Insights: <span class="text-peach">Demographics (N = 200)</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 my-auto">
+                        <div class="bg-white border border-navy/10 rounded-xl p-6 shadow-sm">
+                            <h3 class="text-navy font-title font-bold text-lg mb-4 uppercase tracking-wider"><i class="fa-solid fa-users mr-2 text-peach"></i>Age Cohorts</h3>
+                            <div class="flex flex-col gap-3 text-sm">
+                                <div class="flex justify-between items-center">
+                                    <span>22-25 (Gen-Z):</span>
+                                    <span class="font-bold">35%</span>
+                                </div>
+                                <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-peach h-full" style="width: 35%"></div>
+                                </div>
+                                <div class="flex justify-between items-center mt-2">
+                                    <span class="font-bold text-peach">26-35 (Matured - Sweet Spot):</span>
+                                    <span class="font-bold text-peach">52%</span>
+                                </div>
+                                <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-navy h-full" style="width: 52%"></div>
+                                </div>
+                                <div class="flex justify-between items-center mt-2">
+                                    <span>36+ (Traditional):</span>
+                                    <span class="font-bold">13%</span>
+                                </div>
+                                <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-slate-300 h-full" style="width: 13%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white border border-navy/10 rounded-xl p-6 shadow-sm">
+                            <h3 class="text-navy font-title font-bold text-lg mb-4 uppercase tracking-wider"><i class="fa-solid fa-graduation-cap mr-2 text-peach"></i>Experience Profile</h3>
+                            <div class="flex flex-col gap-3 text-sm">
+                                <div class="flex justify-between items-center">
+                                    <span>Novices (&lt; 1 Year):</span>
+                                    <span class="font-bold">44%</span>
+                                </div>
+                                <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-peach h-full" style="width: 44%"></div>
+                                </div>
+                                <div class="flex justify-between items-center mt-2">
+                                    <span>Intermediate:</span>
+                                    <span class="font-bold">38%</span>
+                                </div>
+                                <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-navy h-full" style="width: 38%"></div>
+                                </div>
+                                <div class="flex justify-between items-center mt-2">
+                                    <span>Active Traders:</span>
+                                    <span class="font-bold">18%</span>
+                                </div>
+                                <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-lime h-full" style="width: 18%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 15: QUANTITATIVE ONBOARDING BARRIERS -->
+                <section id="slide-15" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">14 / QUANTITATIVE FINDINGS</span>
+                        <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Quantitative Insights: <span class="text-peach">Onboarding Barriers</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 my-auto items-center">
+                        <div class="lg:col-span-4">
+                            <h3 class="font-title font-extrabold text-xl text-navy mb-3">Likert 1–5 Mean Validation</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                                Quantitative survey results clearly show that onboarding friction, cold starts, and complex interface layers are rated as primary barriers preventing registration completion.
+                            </p>
+                        </div>
+                        <div class="lg:col-span-8 bg-white border border-navy/10 rounded-xl p-6 shadow-sm flex flex-col gap-6">
+                            <div>
+                                <div class="flex justify-between items-center mb-1 text-xs font-bold text-navy uppercase tracking-wider">
+                                    <span>DOCUMENT HESITANCY (PAN/Aadhaar demand pre-KYC)</span>
+                                    <span class="text-peach">4.26 / 5.0 (85%)</span>
+                                </div>
+                                <div class="w-full bg-slate-100 h-4 rounded-full overflow-hidden">
+                                    <div class="bg-peach h-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-1 text-xs font-bold text-navy uppercase tracking-wider">
+                                    <span>COLD-START ANXIETY (Overwhelming watchlist on login)</span>
+                                    <span class="text-navy">4.12 / 5.0 (82%)</span>
+                                </div>
+                                <div class="w-full bg-slate-100 h-4 rounded-full overflow-hidden">
+                                    <div class="bg-navy h-full" style="width: 82%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-1 text-xs font-bold text-navy uppercase tracking-wider">
+                                    <span>JARGON EXHAUSTION (Financial terminology barriers)</span>
+                                    <span class="text-navy">3.94 / 5.0 (78%)</span>
+                                </div>
+                                <div class="w-full bg-slate-100 h-4 rounded-full overflow-hidden">
+                                    <div class="bg-slate-400 h-full" style="width: 78%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 16: COMPETITIVE SENTIMENT AUDIT -->
+                <section id="slide-16" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">15 / BENCHMARKING</span>
+                        <h2 class="text-white font-title font-extrabold text-3xl mb-6">Competitive Sentiment & <span class="text-lime">Mindshare</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 my-auto">
+                        <div class="bg-navyLight border border-white/5 rounded-xl p-6 shadow-lg">
+                            <h3 class="text-lime font-title font-bold text-base uppercase tracking-wider mb-6">Sentiment Polarity Index (SPI)</h3>
+                            <div class="flex flex-col gap-4">
+                                <div class="flex justify-between items-center">
+                                    <span>Zerodha (Clean but silent/no active advice)</span>
+                                    <span class="text-lime font-bold">+0.58 SPI</span>
+                                </div>
+                                <div class="w-full bg-navyDark h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-[#387ed1] h-full" style="width: 79%"></div>
+                                </div>
+                                <div class="flex justify-between items-center mt-2">
+                                    <span>Groww (Frictionless setup but system lags)</span>
+                                    <span class="text-lime font-bold">+0.42 SPI</span>
+                                </div>
+                                <div class="w-full bg-navyDark h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-[#00D09C] h-full" style="width: 71%"></div>
+                                </div>
+                                <div class="flex justify-between items-center mt-2">
+                                    <span class="text-peach font-bold">ArihantPlus (Exceptional trust but lacks visibility)</span>
+                                    <span class="text-peach font-bold">+0.18 SPI</span>
+                                </div>
+                                <div class="w-full bg-navyDark h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-peach h-full" style="width: 59%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-navyLight border border-white/5 rounded-xl p-6 shadow-lg flex flex-col justify-center">
+                            <span class="text-peach font-title font-bold text-xs uppercase tracking-wider block mb-2">THE POSITIONING WHITE SPACE</span>
+                            <p class="text-sm text-slateLight leading-relaxed mb-4">
+                                <strong class="text-white">The Void:</strong> Competitors like Groww and Upstox offer simplicity without guidance, while Zerodha focuses purely on execution.
+                            </p>
+                            <p class="text-sm text-lime leading-relaxed">
+                                <strong class="text-white">The Opportunity:</strong> ArihantPlus is uniquely positioned to own the <strong>"Guided Confidence"</strong> quadrant—combining institutional-grade advisor systems with a clean digital interface.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 17: DIGITAL VISIBILITY GAP -->
+                <section id="slide-17" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">16 / AUDIT DEFICIT</span>
+                        <h2 class="text-white font-title font-extrabold text-3xl mb-6">Digital <span class="text-lime">Visibility Gap</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 my-auto items-center">
+                        <div class="flex flex-col gap-4">
+                            <p class="text-sm leading-relaxed text-slateLight">
+                                <strong class="text-lime">88% Organic Deficit:</strong> Google Trends search metrics indicate that ArihantPlus trails behind new-age rivals in organic visibility.
+                            </p>
+                            <p class="text-sm leading-relaxed text-slateLight">
+                                <strong class="text-lime">The Discovery Friction:</strong> Despite highly rated App Store ratings (4.3+ Stars), users do not find the application organically because offline success has not translated to search-optimized visual content.
+                            </p>
+                        </div>
+                        <div class="bg-navyLight border border-white/5 rounded-2xl p-6 flex flex-col justify-center items-center shadow-lg">
+                            <span class="text-lime font-title font-bold text-xs uppercase tracking-wider block mb-4">Aided Search Interest Index (12M Trend)</span>
+                            <!-- Clean SVG Graph Representation of the Gap -->
+                            <svg class="w-full max-w-[400px] h-[180px]" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="10" y1="30" x2="390" y2="30" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+                                <line x1="10" y1="90" x2="390" y2="90" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+                                <line x1="10" y1="150" x2="390" y2="150" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+                                <!-- Top Competitor Line (Peach) -->
+                                <path d="M10 140 Q100 60, 200 50 T390 15" fill="none" stroke="var(--peach)" stroke-width="3" />
+                                <!-- Arihant Flat Line (Lime) -->
+                                <path d="M10 155 Q100 155, 200 150 T390 145" fill="none" stroke="var(--lime)" stroke-width="3" />
+                                <text x="20" y="25" fill="var(--peach)" font-size="10" font-family="sans-serif">Competitors (Index: 100)</text>
+                                <text x="20" y="135" fill="var(--lime)" font-size="10" font-family="sans-serif">ArihantPlus (Index: 12)</text>
+                            </svg>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 18: DIGITAL PRESENCE AUDIT (SCREENER.IN) -->
+                <section id="slide-18" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">17 / AUDIT EVIDENCE</span>
+                        <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Digital Presence: <span class="text-peach">Corporate Audit Metrics</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 my-auto items-center">
+                        <div class="flex flex-col gap-4">
+                            <p class="text-sm leading-relaxed text-slate-700">
+                                <strong class="text-navy">Exceptional Security Profiles:</strong> Unlike venture-backed startups burning capital, Arihant Capital operates with clean debt metrics and robust operating returns.
+                            </p>
+                            <p class="text-sm leading-relaxed text-slate-700">
+                                <strong class="text-navy">The Disconnection:</strong> This incredible safety profile is completely hidden inside our app listing ecosystem. We must package this trust factor as our primary acquisition benefit.
+                            </p>
+                        </div>
+                        <div class="bg-white border border-navy/10 rounded-2xl overflow-hidden shadow-lg">
+                            <div class="bg-navy p-4 text-white font-title font-bold text-xs uppercase tracking-wider">
+                                screener.in verified metrics (Arihant)
+                            </div>
+                            <table class="w-full text-left text-xs border-collapse">
+                                <thead>
+                                    <tr class="bg-slate-50 border-b border-slate-100">
+                                        <th class="p-3 font-bold">Metric name</th>
+                                        <th class="p-3 font-bold text-right text-navy">Value / Ratio</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100">
+                                    <tr>
+                                        <td class="p-3 text-slate-600">Debt To Equity</td>
+                                        <td class="p-3 text-right font-bold text-green-600">0.08 (Minimal Leverage)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 text-slate-600">Operating Profit Margin</td>
+                                        <td class="p-3 text-right font-bold text-navy">34.2% (Highly Efficient)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 text-slate-600">ROE (3 Year Average)</td>
+                                        <td class="p-3 text-right font-bold text-navy">22.4% (Strong Yield)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 text-slate-600">Promoter Pledge</td>
+                                        <td class="p-3 text-right font-bold text-green-600">0.00% (No Pledge Risk)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 19: SOLUTION I -->
+                <section id="slide-19" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">18 / RECOMMENDATIONS</span>
+                        <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Solution I: <span class="text-peach">Pre-KYC Onboarding Hub</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 my-auto items-center">
+                        <div class="flex flex-col gap-4">
+                            <p class="text-sm leading-relaxed text-slate-700">
+                                <strong class="text-navy">Value Before Documents:</strong> Bypass registration anxiety by allowing immediate play-wallet usage.
+                            </p>
+                            <p class="text-sm leading-relaxed text-slate-700">
+                                <strong class="text-navy">Practice Sandbox Sandbox:</strong> Automatically credit a ₹1 Lakh virtual balance upon app installation. Delay Aadhaar/PAN requests until the user experiences platform utility.
+                            </p>
+                            <div class="bg-lime/20 border border-lime/50 text-navy rounded-lg p-4 text-xs font-bold">
+                                Expected to drop onboarding registration drop-offs by up to 60%.
+                            </div>
+                        </div>
+                        <div class="bg-navy text-white rounded-3xl p-6 shadow-2xl border border-white/5 max-w-[340px] mx-auto">
+                            <!-- Mobile Demo Mockup -->
+                            <div class="flex justify-between items-center border-b border-white/5 pb-3 mb-4">
+                                <span class="text-[10px] text-lime font-title font-bold tracking-wider"><i class="fa-solid fa-circle text-xs mr-1 animate-pulse"></i> DEMO SANDBOX</span>
+                                <span class="text-[10px] text-slateGray">ArihantPlus Lite</span>
+                            </div>
+                            <div class="bg-navyLight rounded-xl p-4 text-center border border-peach/30 mb-4">
+                                <span class="text-[10px] text-slateGray block mb-1">Practice Account Balance</span>
+                                <span class="text-2xl font-title font-extrabold text-white">₹1,00,000</span>
+                                <span class="text-[10px] text-lime block mt-1"><i class="fa-solid fa-check-double mr-1"></i> Ready to paper-trade</span>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <div class="bg-navyDark p-2.5 rounded-lg flex justify-between items-center text-xs">
+                                    <span>Reliance Industries</span>
+                                    <span class="text-lime font-bold">₹2,940.00 (+1.2%)</span>
+                                </div>
+                                <div class="bg-navyDark p-2.5 rounded-lg flex justify-between items-center text-xs">
+                                    <span>Nifty 50 Index</span>
+                                    <span class="text-lime font-bold">22,140.20 (+0.4%)</span>
+                                </div>
+                                <button class="w-full bg-peach text-white font-title font-bold text-xs py-2.5 rounded-lg mt-2 shadow-lg">
+                                    Unlock Live Account (Fast KYC)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 20: FUNNEL OPTIMIZATION STRATEGY -->
+                <section id="slide-20" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">19 / RECOMMENDATIONS</span>
+                        <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Funnel <span class="text-peach">Optimization Strategy</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-auto">
+                        <div class="bg-white border-t-4 border-peach rounded-b-xl p-6 shadow-sm">
+                            <span class="text-xs text-peach font-title font-bold uppercase tracking-wider block mb-2">Stage 1: Discover</span>
+                            <p class="text-slate-600 text-xs leading-relaxed">
+                                Download opens directly to Guest Mode. Prospects view live tickers, analyze charts, and run mock calculators without registering accounts first.
+                            </p>
+                        </div>
+                        <div class="bg-white border-t-4 border-navy rounded-b-xl p-6 shadow-sm">
+                            <span class="text-xs text-navy font-title font-bold uppercase tracking-wider block mb-2">Stage 2: Experience</span>
+                            <p class="text-slate-600 text-xs leading-relaxed">
+                                Users engage with virtual sandboxes, utilizing mock balance limits and daily research streams to build technical platform confidence.
+                            </p>
+                        </div>
+                        <div class="bg-white border-t-4 border-lime rounded-b-xl p-6 shadow-sm">
+                            <span class="text-xs text-lime font-title font-bold uppercase tracking-wider block mb-2">Stage 3: Transact</span>
+                            <p class="text-slate-600 text-xs leading-relaxed">
+                                Trigger SEBI-compliant KYC once value is proven. Expect a 2.4x higher conversion lift by delaying the document demand wall.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 21: SOLUTION II -->
+                <section id="slide-21" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">20 / RECOMMENDATIONS</span>
+                        <h2 class="text-white font-title font-extrabold text-3xl mb-6">Solution II: <span class="text-lime">Heritage AI & Native Advisory</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-auto">
+                        <div class="bg-navyLight border border-white/5 rounded-xl p-6 shadow-lg">
+                            <div class="text-peach text-2xl mb-4"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <h3 class="text-white font-title font-bold text-base mb-2">Contextual Decoders</h3>
+                            <p class="text-slateGray text-xs leading-relaxed">
+                                Single-tap tooltips translate complex indicators (Beta, Sharpe Ratio) into conversational, plain-English terms directly inside standard watchlist dashboards.
+                            </p>
+                        </div>
+                        <div class="bg-navyLight border border-white/5 rounded-xl p-6 shadow-lg">
+                            <div class="text-peach text-2xl mb-4"><i class="fa-solid fa-heart-pulse"></i></div>
+                            <h3 class="text-white font-title font-bold text-base mb-2">Adaptive Panic Safeguards</h3>
+                            <p class="text-slateGray text-xs leading-relaxed">
+                                AI models detect market-wide panic waves, pushing calmed support indicators ("Nifty support holds at 2020 cycles") to suppress impulsive exits.
+                            </p>
+                        </div>
+                        <div class="bg-navyLight border border-white/5 rounded-xl p-6 shadow-lg">
+                            <div class="text-peach text-2xl mb-4"><i class="fa-solid fa-chart-line"></i></div>
+                            <h3 class="text-white font-title font-bold text-base mb-2">One-Tap Charts</h3>
+                            <p class="text-slateGray text-xs leading-relaxed">
+                                Daily research desk updates are directly integrated into charts as interactive points, enabling immediate, one-tap orders with target prices.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 22: SOLUTION III -->
+                <section id="slide-22" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-cream text-navy">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">21 / RECOMMENDATIONS</span>
+                        <h2 class="text-navy font-title font-extrabold text-3xl mb-6">Solution III: <span class="text-peach">The Arihant League & Roadmap</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 my-auto items-center">
+                        <div class="lg:col-span-6 bg-white border border-navy/10 rounded-xl p-6 shadow-sm">
+                            <h3 class="text-navy font-title font-bold text-base mb-2 uppercase tracking-wider">The Arihant League</h3>
+                            <p class="text-slate-600 text-xs leading-relaxed mb-4">
+                                A weekly, non-speculative fantasy paper-trading platform. Users create 5-stock portfolios based on real-time market action with no capital risk.
+                            </p>
+                            <span class="text-xs font-bold text-peach">Rewards:</span>
+                            <p class="text-slate-600 text-xs leading-relaxed">
+                                Intrinsic status badges, premium webinar access passes, and "Zero Brokerage" account activation vouchers for first live trades.
+                            </p>
+                        </div>
+                        <div class="lg:col-span-6 flex flex-col gap-4">
+                            <h3 class="text-navy font-title font-bold text-base uppercase tracking-wider mb-2">Execution Timeline</h3>
+                            <div class="flex gap-4 items-start">
+                                <span class="bg-peach text-white font-title font-bold text-xs py-1 px-3 rounded-full">Q1</span>
+                                <p class="text-slate-600 text-xs leading-relaxed"><strong>Alpha Release:</strong> Build and test the Pre-KYC Guest Sandbox & automated WhatsApp drop-off triggers.</p>
+                            </div>
+                            <div class="flex gap-4 items-start">
+                                <span class="bg-navy text-white font-title font-bold text-xs py-1 px-3 rounded-full">Q2</span>
+                                <p class="text-slate-600 text-xs leading-relaxed"><strong>Advisory Launch:</strong> Deploy Contextual Jargon Decoders & native AI advisory chart recommendations.</p>
+                            </div>
+                            <div class="flex gap-4 items-start">
+                                <span class="bg-lime text-navy font-title font-bold text-xs py-1 px-3 rounded-full">Q3</span>
+                                <p class="text-slate-600 text-xs leading-relaxed"><strong>Gamification Loop:</strong> Roll out "Arihant League" fantasy leagues across target universities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 23: COMMUNITY GROWTH -->
+                <section id="slide-23" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">22 / RECOMMENDATIONS</span>
+                        <h2 class="text-white font-title font-extrabold text-3xl mb-6">Community-Led <span class="text-lime">Growth Programs</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-auto">
+                        <div class="bg-navyLight border-t-4 border-lime rounded-b-xl p-6 shadow-lg">
+                            <span class="text-lime font-title font-bold text-xs block mb-3 uppercase tracking-wider">CAMPUS AMBASSADORS</span>
+                            <p class="text-slateLight text-xs leading-relaxed">
+                                Form partnerships with business schools (SP Jain, IIMs, commerce hubs). Incentivize ambassadors on verified activations (funded accounts) over simple downloads.
+                            </p>
+                        </div>
+                        <div class="bg-navyLight border-t-4 border-peach rounded-b-xl p-6 shadow-lg">
+                            <span class="text-peach font-title font-bold text-xs block mb-3 uppercase tracking-wider">VERNACULAR CREATORS</span>
+                            <p class="text-slateLight text-xs leading-relaxed">
+                                Sponsor micro-influencers to conduct vernacular trading tutorials. Teach risk-hedged structural strategies instead of speculative options loops.
+                            </p>
+                        </div>
+                        <div class="bg-navyLight border-t-4 border-white rounded-b-xl p-6 shadow-lg">
+                            <span class="text-white font-title font-bold text-xs block mb-3 uppercase tracking-wider">DOUBLE-SIDED REFERRALS</span>
+                            <p class="text-slateLight text-xs leading-relaxed">
+                                Rewards trigger only when a referred account completes their first funded investment. High organic lift reduces expensive search bidding.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 24: ROI & CAC ANALYSIS (INTERACTIVE CALCULATOR) -->
+                <section id="slide-24" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">23 / STRATEGIC INVESTMENT</span>
+                        <h2 class="text-white font-title font-extrabold text-3xl mb-6">ROI & <span class="text-lime">Optimized CAC Analysis</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 my-auto items-center">
+                        <div class="lg:col-span-5 flex flex-col gap-4">
+                            <p class="text-sm leading-relaxed text-slateLight">
+                                <strong class="text-lime">40% Efficiency Leap:</strong> Our models prove that community growth pipelines combined with onboarding optimization reduce blended customer acquisition cost (CAC).
+                            </p>
+                            <!-- Dynamic LTV Calculator -->
+                            <div class="bg-navyLight border border-white/5 p-4 rounded-xl mt-2">
+                                <span class="text-xs text-peach font-title font-bold block mb-2 uppercase">LTV:CAC Efficiency Calculator</span>
+                                <div class="flex justify-between text-xs py-1 border-b border-white/5">
+                                    <span>Blended Industry CAC:</span>
+                                    <span class="text-white font-bold">₹4,000</span>
+                                </div>
+                                <div class="flex justify-between text-xs py-1.5 text-lime border-b border-white/5 font-bold">
+                                    <span>Arihant Optimized Target CAC:</span>
+                                    <span>₹2,400</span>
+                                </div>
+                                <div class="flex justify-between text-xs py-1 text-slateGray">
+                                    <span>Payback Period reduction:</span>
+                                    <span class="text-white font-bold">14M &rarr; 8 Months</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Visual interactive panel mockup -->
+                        <div class="lg:col-span-7 grid grid-cols-2 gap-4">
+                            <div class="bg-navyDark border border-peach/30 rounded-2xl p-6 text-center shadow-lg">
+                                <span class="text-xs text-peach font-title font-bold uppercase tracking-wider block mb-2">Industry Average</span>
+                                <span class="text-4xl font-title font-extrabold text-white block mb-2">₹4,000</span>
+                                <p class="text-[10px] text-slateGray leading-relaxed">
+                                    High acquisition burn driven by aggressive bidding competition on standard search networks.
+                                </p>
+                            </div>
+                            <div class="bg-navyDark border border-lime/30 rounded-2xl p-6 text-center shadow-lg">
+                                <span class="text-xs text-lime font-title font-bold uppercase tracking-wider block mb-2">Optimized Target</span>
+                                <span class="text-4xl font-title font-extrabold text-lime block mb-2">₹2,400</span>
+                                <p class="text-[10px] text-slateGray leading-relaxed">
+                                    Accelerated payback parameters driven by organic campus loops and high paper-to-live conversions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SLIDE 25: GOVERNANCE, COMPLIANCE & Q&A -->
+                <section id="slide-25" class="slide absolute inset-0 p-12 hidden flex flex-col justify-between bg-navy text-white">
+                    <div>
+                        <span class="text-peach font-title font-bold text-xs tracking-wider uppercase block mb-1">24 / COMPLIANCE & CONCLUSION</span>
+                        <h2 class="text-white font-title font-extrabold text-3xl mb-6">Governance, <span class="text-lime">Compliance & Q&A</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 my-auto items-center">
+                        <div class="flex flex-col gap-4">
+                            <div class="bg-navyLight border border-white/5 rounded-xl p-5 shadow-lg">
+                                <h3 class="text-white font-title font-bold text-sm uppercase tracking-wider mb-2"><i class="fa-solid fa-user-shield text-lime mr-2"></i>DPDP ACT 2023 Compliance</h3>
+                                <p class="text-slateGray text-xs leading-relaxed">
+                                    Full user data anonymization during pre-KYC virtual testing phase. Live registration loops only initialize once verified accounts are requested.
+                                </p>
+                            </div>
+                            <div class="bg-navyLight border border-white/5 rounded-xl p-5 shadow-lg">
+                                <h3 class="text-white font-title font-bold text-sm uppercase tracking-wider mb-2"><i class="fa-solid fa-gavel text-lime mr-2"></i>SEBI Safety Markers</h3>
+                                <p class="text-slateGray text-xs leading-relaxed">
+                                    Zero "guaranteed return" features are integrated into the gamified simulated networks. Corporate research is strictly sourced from registered advisors.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="text-center p-6 border border-white/10 rounded-2xl bg-gradient-to-br from-navy to-navyDark">
+                            <h3 class="text-3xl font-title font-extrabold text-white mb-2">Any Questions?</h3>
+                            <p class="text-xs text-peach font-title font-bold uppercase tracking-widest block mb-4">SP Jain Research Team</p>
+                            <p class="text-sm text-slateGray italic leading-relaxed mb-6">
+                                "In a market crowded with silent, transactional brokers, the platform that delivers Guided Confidence will capture India's next generation of wealth creators."
+                            </p>
+                            <span class="text-xs text-white block font-bold">Thank You</span>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- CONTROLS FOOTER -->
+            <footer class="h-16 bg-navyDark border-t border-white/10 px-8 flex justify-between items-center z-10 relative">
+                <button onclick="changeSlide(-1)" id="prev-btn" class="text-xs text-slateGray hover:text-lime font-title font-bold tracking-wider uppercase transition flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i> Prev
+                </button>
+                
+                <!-- PROGRESS BAR -->
+                <div class="flex-grow mx-8 bg-white/10 h-1.5 rounded-full overflow-hidden relative">
+                    <div id="progress-bar" class="bg-peach h-full transition-all duration-300" style="width: 4%"></div>
+                </div>
+
+                <button onclick="changeSlide(1)" id="next-btn" class="text-xs text-slateGray hover:text-lime font-title font-bold tracking-wider uppercase transition flex items-center gap-2">
+                    Next <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </footer>
+
+        </div>
+    </main>
+
+    <!-- INSTRUCTIONS AND META info -->
+    <div class="w-full text-center py-4 bg-navyDark border-t border-white/5 text-[11px] text-slateGray relative z-20">
+        <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-x-6 gap-y-2">
+            <span><i class="fa-solid fa-keyboard mr-1"></i> Use <strong>Left / Right Arrow</strong> Keys</span>
+            <span>•</span>
+            <span><i class="fa-solid fa-globe mr-1"></i> Perfect for 16:9 widescreen boardroom presentation</span>
+            <span>•</span>
+            <span><i class="fa-solid fa-circle-check text-lime mr-1"></i> Fully responsive</span>
+        </div>
+    </div>
+
+    <!-- PRESENTATION APP CONTROLLER LOGIC -->
+    <script>
+        const totalSlidesCount = 25;
+        let activeSlideIndex = 1;
+
+        // Populate quick jump options dynamically
+        const jumpSelect = document.getElementById('slide-select');
+        const slideHeaders = [
+            "1. Cover Page",
+            "2. Executive Summary",
+            "3. Funnel Leak Diagnostics",
+            "4. Research Framework",
+            "5. Lit Review: Trust & Risk",
+            "6. Lit Review: Acceptance & Load",
+            "7. Lit Review: Motivation",
+            "8. The Research Gap",
+            "9. Methodology Design",
+            "10. Qual: Active Traders",
+            "11. Qual: Dormant Leads",
+            "12. Qual: Benchmarks",
+            "13. Synthesis Matrix",
+            "14. Quant: Demographics",
+            "15. Quant: Barriers",
+            "16. Competitive Sentiment",
+            "17. Digital Visibility Gap",
+            "18. Digital Presence Audit",
+            "19. Solution I: Pre-KYC Hub",
+            "20. Funnel Strategy",
+            "21. Solution II: Heritage AI",
+            "22. Solution III: Roadmap",
+            "23. Community Growth",
+            "24. ROI & CAC Analysis",
+            "25. Compliance & Conclusion"
+        ];
+
+        slideHeaders.forEach((header, index) => {
+            const opt = document.createElement('option');
+            opt.value = index + 1;
+            opt.innerText = header;
+            jumpSelect.appendChild(opt);
+        });
+
+        function updateSlideDisplay() {
+            // Loop and render slide displays
+            for (let i = 1; i <= totalSlidesCount; i++) {
+                const el = document.getElementById(`slide-${i}`);
+                if (el) {
+                    if (i === activeSlideIndex) {
+                        el.classList.remove('hidden');
+                        el.classList.add('flex', 'slide-transition');
+                    } else {
+                        el.classList.add('hidden');
+                        el.classList.remove('flex', 'slide-transition');
+                    }
+                }
+            }
+
+            // Button active status controls
+            document.getElementById('prev-btn').disabled = (activeSlideIndex === 1);
+            document.getElementById('next-btn').disabled = (activeSlideIndex === totalSlidesCount);
+
+            // Update Progress bar percentage width
+            const progressPercentage = (activeSlideIndex / totalSlidesCount) * 100;
+            document.getElementById('progress-bar').style.width = `${progressPercentage}%`;
+
+            // Update dropdown values matching current index
+            jumpSelect.value = activeSlideIndex;
+        }
+
+        function changeSlide(direction) {
+            const indexValue = activeSlideIndex + direction;
+            if (indexValue >= 1 && indexValue <= totalSlidesCount) {
+                activeSlideIndex = indexValue;
+                updateSlideDisplay();
+            }
+        }
+
+        function jumpToSlide(num) {
+            const targetVal = parseInt(num);
+            if (targetVal >= 1 && targetVal <= totalSlidesCount) {
+                activeSlideIndex = targetVal;
+                updateSlideDisplay();
+            }
+        }
+
+        // Listen for standard presentation keyboard buttons
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight' || event.key === ' ' || event.key === 'Enter') {
+                event.preventDefault();
+                changeSlide(1);
+            } else if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                changeSlide(-1);
+            }
+        });
+
+        // Initialize view state
+        updateSlideDisplay();
+    </script>
+
+</body>
+</html>
