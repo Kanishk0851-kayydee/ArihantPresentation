@@ -133,10 +133,11 @@
     <!-- HEADER / NAVIGATION CONTROLS -->
     <header class="w-full bg-navy/95 backdrop-blur border-b border-white/10 px-8 py-4 flex flex-wrap gap-y-3 justify-between items-center z-20 relative no-print">
         <div class="flex items-center gap-4">
-            <span class="text-lime font-title font-bold tracking-widest text-xs uppercase bg-navyLight px-3 py-1.5 rounded-full border border-white/5">
-                SP Jain Final Presentation Deck
-            </span>
-            <div class="h-4 w-[1px] bg-white/10"></div>
+            <!-- Dynamic Corporate Brand Logo from Upload -->
+            <div class="bg-white px-3 py-1 rounded-lg shadow-inner flex items-center border border-white/15">
+                <img src="Arihant Plus + SPJ logo.png" alt="SP Jain & ArihantPlus Corporate Logo" class="h-10 w-auto object-contain">
+            </div>
+            <div class="h-4 w-[1px] bg-white/10 hidden sm:inline"></div>
             <span class="text-white font-title font-medium text-sm hidden md:inline">
                 ArihantPlus Growth Audit
             </span>
@@ -1442,11 +1443,26 @@
         // High-Fidelity Confetti Trigger
         function triggerConfettiShower() {
             if (typeof confetti === 'function') {
+                // Primary high-density burst from the bottom center
                 confetti({
-                    particleCount: 150,
-                    spread: 85,
+                    particleCount: 180,
+                    spread: 100,
                     origin: { y: 0.6 }
                 });
+                
+                // Timed multi-angle secondary bursts to fill up widescreen viewports beautifully
+                setTimeout(() => {
+                    confetti({
+                        particleCount: 100,
+                        spread: 120,
+                        origin: { y: 0.5, x: 0.3 }
+                    });
+                    confetti({
+                        particleCount: 100,
+                        spread: 120,
+                        origin: { y: 0.5, x: 0.7 }
+                    });
+                }, 250);
             } else {
                 console.error("Confetti library is not loaded.");
             }
@@ -1510,11 +1526,6 @@
 
             // Update dropdown values matching current index
             jumpSelect.value = activeSlideIndex;
-
-            // Celebrate automatically upon reaching Slide 27 (Compliance & Q&A)
-            if (activeSlideIndex === totalSlidesCount) {
-                triggerConfettiShower();
-            }
         }
 
         function changeSlide(direction) {
