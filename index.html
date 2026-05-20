@@ -133,9 +133,27 @@
     <!-- HEADER / NAVIGATION CONTROLS -->
     <header class="w-full bg-navy/95 backdrop-blur border-b border-white/10 px-8 py-4 flex flex-wrap gap-y-3 justify-between items-center z-20 relative no-print">
         <div class="flex items-center gap-4">
-            <!-- Dynamic Corporate Brand Logo from Upload -->
-            <div class="bg-white px-3 py-1 rounded-lg shadow-inner flex items-center border border-white/15">
-                <img src="Arihant Plus + SPJ logo.png" alt="SP Jain & ArihantPlus Corporate Logo" class="h-10 w-auto object-contain">
+            <!-- Dynamic Corporate Brand Logo from Upload (with self-contained fallback) -->
+            <div class="bg-white px-3 py-1.5 rounded-lg shadow-inner flex items-center border border-white/15 h-12">
+                <img id="brand-logo" src="Arihant Plus + SPJ logo.png" alt="SP Jain & ArihantPlus Corporate Logo" class="h-9 w-auto object-contain" onerror="this.style.display='none'; document.getElementById('logo-fallback').classList.remove('hidden');">
+                
+                <!-- Seamless Typography/Graphic Fallback matching branding parameters -->
+                <div id="logo-fallback" class="hidden flex items-center gap-3">
+                    <div class="flex items-center gap-2 pr-3 border-r border-slate-300">
+                        <div class="w-8 h-8 bg-[#5C3E21] rounded flex flex-col items-center justify-center text-[9px] text-white font-title font-bold leading-none select-none">
+                            <span>SPJ</span>
+                            <span class="text-[6px] text-amber-400">GLOBAL</span>
+                        </div>
+                        <div class="flex flex-col text-left">
+                            <span class="font-title font-extrabold text-[10px] text-navy leading-none tracking-tight">S P Jain</span>
+                            <span class="text-[7px] font-sans font-medium text-slate-500 leading-none">School of Global<br>Management</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1.5 pl-1">
+                        <span class="font-title font-extrabold text-sm text-navy tracking-tight">Arihant</span>
+                        <span class="font-title font-extrabold text-sm text-[#00B050] tracking-tight">PLUS</span>
+                    </div>
+                </div>
             </div>
             <div class="h-4 w-[1px] bg-white/10 hidden sm:inline"></div>
             <span class="text-white font-title font-medium text-sm hidden md:inline">
@@ -1088,7 +1106,7 @@
                             </p>
                         </div>
                         <div class="bg-navyLight border border-white/5 rounded-xl p-6 shadow-lg">
-                            <div class="text-peach text-2xl mb-4"><i class="fa-solid fa-chart-line"></i></div>
+                            <div class="text-[#E07A5F] text-2xl mb-4"><i class="fa-solid fa-chart-line"></i></div>
                             <h3 class="text-white font-title font-bold text-base mb-2">One-Tap Charts</h3>
                             <p class="text-slateGray text-xs leading-relaxed">
                                 Daily research desk updates are directly integrated into charts as interactive points, enabling immediate, one-tap orders with target prices.
@@ -1301,7 +1319,7 @@
                                 <div class="flex items-center gap-3">
                                     <div class="w-24 text-right text-[10px] text-slateGray font-bold uppercase">Advisory</div>
                                     <div class="flex-grow bg-white/5 p-1 rounded-lg">
-                                        <div class="h-8 w-[67.5%] bg-gradient-to-r from-lime/50 to-navyLight text-slateLight font-title font-bold text-xs rounded flex items-center justify-between px-3">
+                                        <div class="h-8 w-[67.5%] bg-gradient-to-r from-[#D9F077]/50 to-navyLight text-slateLight font-title font-bold text-xs rounded flex items-center justify-between px-3">
                                             <span>Heritage AI & Integrated Advisory</span>
                                             <span class="text-lime font-bold">-₹500</span>
                                         </div>
@@ -1311,7 +1329,7 @@
                                 <div class="flex items-center gap-3">
                                     <div class="w-24 text-right text-[10px] text-slateGray font-bold uppercase">Community</div>
                                     <div class="flex-grow bg-white/5 p-1 rounded-lg">
-                                        <div class="h-8 w-[60%] bg-gradient-to-r from-lime to-navyLight text-slateLight font-title font-bold text-xs rounded flex items-center justify-between px-3">
+                                        <div class="h-8 w-[60%] bg-gradient-to-r from-[#D9F077] to-navyLight text-slateLight font-title font-bold text-xs rounded flex items-center justify-between px-3">
                                             <span>Ambassadors & Vernacular Creators</span>
                                             <span class="text-lime font-bold">-₹300</span>
                                         </div>
@@ -1466,6 +1484,14 @@
             } else {
                 console.error("Confetti library is not loaded.");
             }
+        }
+
+        // Safe Logo Error Handler
+        function handleLogoError() {
+            const logo = document.getElementById('brand-logo');
+            const fallback = document.getElementById('logo-fallback');
+            if (logo) logo.style.display = 'none';
+            if (fallback) fallback.classList.remove('hidden');
         }
 
         // Interactive Onboarding Funnel Simulator Engine
